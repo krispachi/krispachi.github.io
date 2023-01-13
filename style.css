@@ -12,6 +12,6 @@ section {
 }
 
 #about .col-md-5,
-#projects .card-text:nth-cild(1) {
+#projects .card-text:nth-child(1) {
     text-align: justify;
 }
