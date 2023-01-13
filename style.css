@@ -12,6 +12,6 @@ section {
 }
 
 #about .col-md-5,
-#projects .card-text {
+#projects .card-text > * {
     text-align: justify;
 }
