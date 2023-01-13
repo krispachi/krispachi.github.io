@@ -14,7 +14,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-warning shadow-sm py-3 fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Krisna Ariwidnyana</a>
+                <a class="navbar-brand" href="#home">Krisna Ariwidnyana</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,13 +25,13 @@
                             <a class="nav-link active" aria-current="page" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
+                            <a class="nav-link active" href="#about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#projects">Projects</a>
+                            <a class="nav-link active" href="#projects">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
+                            <a class="nav-link active" href="#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -41,9 +41,10 @@
 
         <!-- Jumbotron -->
         <section class="jumbotron text-center">
-            <img src="img/krisna.jpg" alt="My Photo" width="150" class="rounded-circle img-thumbnail" />
+            <img src="img/krisna.jpg" alt="My Photo" width="150" class="rounded-circle" />
             <h1 class="display-4">I. P. Krisna A.</h1>
             <p class="lead">A Person Who Wants To Be Programmer</p>
+            <p class="lead">Maksudnya seorang yang mau jadi Programmer wkwk</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path
                     fill="#ffffff"
@@ -57,14 +58,24 @@
         <!-- About -->
         <section id="about">
             <div class="container">
-                <div class="row text-center mb-4">
+                <div class="row text-center mb-5">
                     <div class="col">
                         <h2>About Me</h2>
                     </div>
                 </div>
-                <div class="row justify-content-evenly fs-5 text-center">
-                    <div class="col-md-5 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos id nobis omnis quam temporibus optio sunt error eum officiis.</div>
-                    <div class="col-md-5 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed numquam impedit quam dolorem, est maiores nam fugit tempore, ipsa, molestiae id repudiandae? Neque, quas.</div>
+                <div class="row justify-content-evenly fs-5">
+                    <div class="col-md-5 mb-4">
+                        Halo, Aku adalah seorang siswa (seorang yak) Sekolah Menengah Kejuruan yang mengambil jurusan Rekayasa Perangkat Lunak. Tahun 2024 nanti aku sudah kelas 3 (semoga naik :D), ohh saat aku mengetik ini sekarang masih
+                        awal tahun 2023 cuy.
+                    </div>
+                    <div class="col-md-5 mb-4">
+                        Hmmm... Jurusan Rekayasa Perangkat Lunak setahu aku nanti pekerjaanya ngoding gitu. Saat awal-awal belajar, aku coba pelajari beberapa bahasa pemrograman karena kurang tahu dari mana dulu (Belum kepikiran mengetik
+                        "Belajar ngoding pemula dari bahasa apa" di Google wkwkw).
+                    </div>
+                    <div class="col-md-5 mb-4">
+                        Jadi aku mencoba menonton Tutorial Ngoding dari HTML, CSS, Javascript, PHP, C (Mulai belajar Bahasa Pemrograman C karena dapat di sekolah), C++, dan Java (Yang aku ingat cuma itu hehehe). Sekarang mungkin tidak ingat
+                        semuanya tetapi logikanya jadi lebih paham aku.
+                    </div>
                 </div>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -80,63 +91,98 @@
         <!-- Projects -->
         <section id="projects">
             <div class="container">
-                <div class="row text-center mb-4">
+                <div class="row text-center mb-5">
                     <div class="col">
                         <h2>My Projects</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center mb-5">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-4">
                         <div class="card">
                             <img src="img/projects/ProgramKasirKrisna.png" class="card-img-top" alt="Program Kasir Krisna" />
                             <div class="card-body">
+                                <h5 class="card-text">Program Kasir Krisna</h5>
+                                <hr />
                                 <p class="card-text">
                                     Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak
                                     memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.
                                 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img src="img/projects/ProgramKasirKrisna.png" class="card-img-top" alt="Program Kasir Krisna" />
-                            <div class="card-body">
                                 <p class="card-text">
-                                    Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak
-                                    memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.
+                                    <a href="https://github.com/krispachi/Java/blob/241983a653fc92d2ee5a666f9f89033c7b89b4d4/Program_Kasir_Krisna.zip" target="_blank" class="text-warning text-bold text-decoration-none"
+                                        >&gt;&gt; Cobain Programnya (Desktop Diperlukan)</a
+                                    >
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-4">
                         <div class="card">
                             <img src="img/projects/ProgramKasirKrisna.png" class="card-img-top" alt="Program Kasir Krisna" />
                             <div class="card-body">
+                                <h5 class="card-text">Program Kasir Krisna</h5>
+                                <hr />
                                 <p class="card-text">
                                     Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak
                                     memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.
                                 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img src="img/projects/ProgramKasirKrisna.png" class="card-img-top" alt="Program Kasir Krisna" />
-                            <div class="card-body">
                                 <p class="card-text">
-                                    Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak
-                                    memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.
+                                    <a href="https://github.com/krispachi/Java/blob/241983a653fc92d2ee5a666f9f89033c7b89b4d4/Program_Kasir_Krisna.zip" target="_blank" class="text-warning text-bold text-decoration-none"
+                                        >&gt;&gt; Cobain Programnya (Desktop Diperlukan)</a
+                                    >
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-4">
                         <div class="card">
                             <img src="img/projects/ProgramKasirKrisna.png" class="card-img-top" alt="Program Kasir Krisna" />
                             <div class="card-body">
+                                <h5 class="card-text">Program Kasir Krisna</h5>
+                                <hr />
                                 <p class="card-text">
                                     Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak
                                     memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.
+                                </p>
+                                <p class="card-text">
+                                    <a href="https://github.com/krispachi/Java/blob/241983a653fc92d2ee5a666f9f89033c7b89b4d4/Program_Kasir_Krisna.zip" target="_blank" class="text-warning text-bold text-decoration-none"
+                                        >&gt;&gt; Cobain Programnya (Desktop Diperlukan)</a
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/projects/ProgramKasirKrisna.png" class="card-img-top" alt="Program Kasir Krisna" />
+                            <div class="card-body">
+                                <h5 class="card-text">Program Kasir Krisna</h5>
+                                <hr />
+                                <p class="card-text">
+                                    Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak
+                                    memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.
+                                </p>
+                                <p class="card-text">
+                                    <a href="https://github.com/krispachi/Java/blob/241983a653fc92d2ee5a666f9f89033c7b89b4d4/Program_Kasir_Krisna.zip" target="_blank" class="text-warning text-bold text-decoration-none"
+                                        >&gt;&gt; Cobain Programnya (Desktop Diperlukan)</a
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="img/projects/ProgramKasirKrisna.png" class="card-img-top" alt="Program Kasir Krisna" />
+                            <div class="card-body">
+                                <h5 class="card-text">Program Kasir Krisna</h5>
+                                <hr />
+                                <p class="card-text">
+                                    Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak
+                                    memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.
+                                </p>
+                                <p class="card-text">
+                                    <a href="https://github.com/krispachi/Java/blob/241983a653fc92d2ee5a666f9f89033c7b89b4d4/Program_Kasir_Krisna.zip" target="_blank" class="text-warning text-bold text-decoration-none"
+                                        >&gt;&gt; Cobain Programnya (Desktop Diperlukan)</a
+                                    >
                                 </p>
                             </div>
                         </div>
@@ -156,7 +202,7 @@
         <!-- Contact -->
         <section id="contact">
             <div class="container">
-                <div class="row text-center mb-4">
+                <div class="row text-center mb-5">
                     <div class="col">
                         <h2>Contact Me</h2>
                     </div>
@@ -166,7 +212,7 @@
                         <form>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="name" />
+                                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Tidak Berfungsi Hehehe" />
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -195,6 +241,7 @@
         <!-- Footer -->
         <footer class="bg-warning text-white text-center pt-1 pb-5">
             <p>Created with nontek by <a href="https://instagram.com/krisna_8805" class="text-white fw-bold">Krisna A!</a></p>
+            <p>Aku membuat website ini sambil melihat Tutorial di Channel YouTube WPU <a href="https://youtu.be/LkR-9Z1sle8" class="text-white fw-bold">Berikut</a></p>
         </footer>
         <!-- Akhir Footer -->
 
