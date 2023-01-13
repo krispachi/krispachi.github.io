@@ -10,3 +10,8 @@
 section {
     padding-top: 7rem;
 }
+
+#about .col-md-5,
+#projects .card-text {
+    text-align: justify;
+}
