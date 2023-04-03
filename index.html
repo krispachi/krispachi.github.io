@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krispacho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Space Mono', monospace;
+        }
+        .container {
+            margin: 64px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(auto-fit, 1fr);
+            gap: 8px;
+        }
+        .container section {
+            padding: 32px;
+            padding-bottom: 40px;
+            color: white;
+            scroll-margin-top: 8px;
+        }
+        /* #9a4d36 */
+        .container .information { background-color: #36622d }
+        .container .profile { background-color: #2e6178 }
+        .container .project { background-color: #b66f16 }
+        .container section h3 {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .container section p {
+            text-indent: 2em;
+        }
+
+        .sidebar {
+            display: none;
+            position: absolute;
+            top: 0;
+            width: 80%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            padding: 32px;
+        }
+        .sidebar .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .sidebar .header div {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 4px;
+        }
+        .sidebar .header div span {
+            display: block;
+            width: 24px;
+            height: 4px;
+            background-color: white;
+        }
+        .sidebar .header .sidebar-close span:nth-child(1) { transform: rotate(45deg) translate(3px, 2.7px) }
+        .sidebar .header .sidebar-close span:nth-child(2) { transform: rotate(-45deg) translate(3px, -2.7px) }
+        .sidebar .header .sidebar-close:hover > span { background-color: #b7421e }
+        .sidebar ul { list-style: none }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar ul li a[href="#information"]:hover { background-color: #36622d }
+        .sidebar ul li a[href="#profile"]:hover { background-color: #2e6178 }
+        .sidebar ul li a[href="#project"]:hover { background-color: #b66f16 }
+        .sidebar ul li a[href="#information"]:active { color: #30b416 }
+        .sidebar ul li a[href="#profile"]:active { color: #0c98d8 }
+        .sidebar ul li a[href="#project"]:active { color: #ea8102 }
+        .sidebar ul li a:active { background-color: black !important }
+        .sidebar-open {
+            display: none;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 4px;
+            width: 24px;
+        }
+        .sidebar-open span {
+            display: block;
+            width: 24px;
+            height: 4px;
+            background-color: black;
+        }
+        .sidebar-open:hover > span {
+            background-color: #36622d;
+        }
+        .sidebar-open, .sidebar-close {
+            cursor: pointer;
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            align-items: center;
+        }
+        nav h3 {
+            margin-left: 32px;
+        }
+        nav ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 8px;
+        }
+        nav ul a {
+            text-decoration: none;
+            background-color: black;
+            padding: 8px;
+            display: block;
+            text-align: center;
+        }
+        nav ul a:hover {
+            color: black;
+            background-color: white;
+            box-shadow: inset 0 0 0 3px black;
+        }
+        nav ul a, nav ul a:active { color: white }
+        nav ul li a[href="#information"]:active { background-color: #36622d }
+        nav ul li a[href="#profile"]:active { background-color: #2e6178 }
+        nav ul li a[href="#project"]:active { background-color: #b66f16 }
+        
+        .hero {
+            display: grid;
+            grid-template-areas: 'hero hero github'
+                                 'hero hero youtube';
+            color: #fff;
+            min-height: 512px;
+        }
+        .hero > * {
+            padding: 32px;
+            background-size: cover;
+            background-position: center;
+            text-shadow: .6px .6px 1px rgba(0, 0, 0, .6);
+        }
+        .hero .header {
+            grid-area: hero;
+            background-image: url("img/hero-header.jpg");
+            min-height: 240px;
+        }
+        .hero .header h3 {
+            margin-bottom: 8px;
+        }
+        .hero .github {
+            grid-area: github;
+            background-image: url("img/hero-github.jpg");
+        }
+        .hero .github, 
+        .hero .youtube {
+            display: grid;
+            place-content: center;
+            text-align: center;
+            min-height: 160px;
+            cursor: pointer;
+        }
+        .hero .github p::before, 
+        .hero .youtube p::before {
+            content: "";
+            display: block;
+            width: 120%;
+            margin-left: -10%;
+            height: .9px;
+            background-color: #fff;
+        }
+        .hero .github:hover, 
+        .hero .youtube:hover {
+            text-shadow: .6px .6px 3px rgba(0, 0, 0, .8);
+        }
+        .hero .youtube {
+            grid-area: youtube;
+            background-image: url("img/hero-youtube.jpg");
+        }
+
+        .author {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 8px;
+        }
+        .author .profile img {
+            width: 80px;
+            display: block;
+            margin: 0 auto 16px;
+            border-radius: 80px;
+        }
+
+        .project .list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .project .list .content {
+            border: 4px solid #e3bd64;
+            padding: 8px;
+        }
+        .project .list .content div {
+            padding: 0 16px 16px;
+        }
+        .project .list .content img {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        .project .list .content a {
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            text-shadow: 2px 2px #24d60083;
+        }
+        .project .list .content a:hover {
+            text-shadow: 2px 2px #8fff3a83;
+        }
+        .project .list .content a:active {
+            text-shadow: 2px 2px #16840083;
+        }
+
+        footer {
+            margin-top: 64px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .hero {
+                min-height: inherit;
+            }
+            .author {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .sidebar-open {
+                display: grid;
+                margin-bottom: 16px;
+            }
+            
+            .container {
+                margin: 32px;
+            }
+            .hero {
+                grid-template-areas: 'hero'
+                                     'github'
+                                     'youtube';
+            }
+            nav {
+                grid-template-columns: 1fr;
+                display: none;
+            }
+            .project .list {
+                grid-template-columns: 1fr;
+            }
+            .project .list .content {
+                border: 2px solid #e3bd64;
+                padding: 4px;
+            }
+            .project .list .content div {
+                padding: 0 8px 8px;
+            }
+
+            footer {
+                margin-top: 32px;
+            }
+        }
+        @media screen and (max-width: 425px) {
+            .container section {
+                padding: 32px 24px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="header">
+            <h3>Krispachi</h3>
+            <div class="sidebar-close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul>
+            <li><a onclick="sidebarClose()" href="#information">Information</a></li>
+            <li><a onclick="sidebarClose()" href="#profile">Profile</a></li>
+            <li><a onclick="sidebarClose()" href="#project">Project</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="sidebar-open">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav>
+            <h3>Krispachi</h3>
+            <ul>
+                <li><a href="#information">Information</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#project">Project</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero">
+            <div class="header">
+                <h3>Krispache</h3>
+                <p>Sebuah Website Utama yang berisi beberapa</p>
+                <p>informasi mengenai Krispachi</p>
+            </div>
+            <div class="github">
+                <h3>Github</h3>
+                <p>@Krispachi</p>
+            </div>
+            <div class="youtube">
+                <h3>YouTube</h3>
+                <p>@KrisnaOxygen</p>
+            </div>
+        </div>
+
+        <div class="author">
+            <section id="information" class="information">
+                <h3>💡Information</h3>
+                <p>Website ini adalah website yang dibuat oleh Krispachi sebagai tempat untuk menampilkan beberapa hal yang dibuat oleh saya seperti Website atau Program. Disini juga terdapat beberapa informasi mengenai saya.</p><br>
+                <p>Disini saya akan memajang website yang saya buat, baik website sebagai latihan ataupun website yang saya buat saat mempelajari suatu materi mungkin bisa disebut belajar sambil praktek.</p><br>
+                <p>Saya juga suka membuat program selain website seperti Java, tetapi sekarang saya fokus mempelajari pembuatan Web karena di tempat saya Training sedang menggunakan website.</p>
+            </section>
+    
+            <section id="profile" class="profile">
+                <h3>📚Profile</h3>
+                <img src="img/krispachi.jpg" alt="Foto Krispachi">
+                <p>Saya Krispachi dan tidak bisa dipanggil Amadeus karena itu bukan nama saya (～￣▽￣)～</p><br> 
+                <p>Nama asli saya Krisna dan saat mengetik teks ini, saya masih berada di bangku kelas 11 Sekolah Menengah Kejuruan (Bukan Kejurusan yak?)</p>
+            </section>
+        </div>
+        
+        <section id="project" class="project">
+            <h3>🎍Projects</h3>
+            <p>Karena saya suka membuat program karena membuat program dapat melatih pikiran dalam menyelesaikan masalah dengan logika yang masuk akal, sehingga menurut saya membuat program itu seru. Oleh karena itu, dibawah ini saya memajang beberapa Program dan Website yang saya buat dan dapat juga diakses di GitHub.</p><br>
+            <div class="list">
+                <div class="content">
+                    <img src="img/krispachi-march.png" alt="Krispachi March">
+                    <div>
+                        <h3>Krispachi March</h3>
+                        <p>Krispachi March adalah nama dari website yang saya buat disaat belajar tentang CSS Grid di channel Web Programming UNPAS di YouTube. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isi website di tutorial yang pastinya saya sudah pelajari setiap bagian dari kode yang dipakai untuk membuat websitenya.</p><br>
+                        <a href="https://krispachi.github.io/HTML/krispachi-march" target="_blank">Kunjungi Websitenya</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="img/portfolio-alpha.png" alt="Portfolio Alpha">
+                    <div>
+                        <h3>Portfolio Alpha</h3>
+                        <p>Website Portfolio Alpha adalah Website yang saya buat untul latihan belajar menggunakan Bootstrap. Saya menonton tutorial di Channel YouTube Web Programming UNPAS pada video NgoBar #27 sambil mempraktekkan membuat Websitenya dengan memodifikasi beberapa tampilan sesuai keinginan saya.</p><br>
+                        <a href="https://krispachi.github.io/HTML/portfolio-bootstrap5" target="_blank">Kunjungi Websitenya</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="img/meng-awan.png" alt="MengAwan">
+                    <div>
+                        <h3>MengAwan</h3>
+                        <p>Website MengAwan adalah website yang aku buat sebagai latihan untuk menggunakan Bootstrap. Aku membuat website ini sambil melihat tutorial di YouTube sekaligus langsung praktek dan aku modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.</p><br>
+                        <a href="https://krispachi.github.io/HTML/myporto" target="_blank">Kunjungi Websitenya</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="img/program-kasir-krisna.png" alt="Program Kasir Krisna">
+                    <div>
+                        <h3>Program Kasir Krisna</h3>
+                        <p>Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.</p><br>
+                        <a href="https://github.com/krispachi/Java/tree/main/Program_Kasir_Krisna" target="_blank">Lihat Programnya</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            Krispachi - 02 April 2023
+        </footer>
+    </div>
+
+    <script>
+        document.querySelector(".sidebar-open").addEventListener("click", function() {
+            document.querySelector(".sidebar").style.display = "inherit";
+        });
+        document.querySelector(".sidebar-close").addEventListener("click", function() {
+            sidebarClose()
+        });
+        function sidebarClose() {
+            document.querySelector(".sidebar").style.display = "none";
+        }
+        
+        document.querySelector(".hero .github").addEventListener("click", function() {
+            window.open("https://github.com/krispachi")
+        });
+        document.querySelector(".hero .youtube").addEventListener("click", function() {
+            window.open("https://www.youtube.com/@krisnaoxygen")
+        });
+    </script>
+</body>
+</html>
