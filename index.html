@@ -405,6 +405,24 @@
         document.querySelector(".hero .youtube").addEventListener("click", function() {
             window.open("https://www.youtube.com/@krisnaoxygen")
         });
+        
+        document.querySelector(".theme-indigo").addEventListener("change", function() {
+            if(this.checked) {
+                document.querySelectorAll("section").forEach(element => {
+                    element.style.backgroundColor = "indigo";
+                });
+                document.querySelectorAll(".content").forEach(element => {
+                    element.style = "border-color: white";
+                });
+            } else {
+                document.querySelector("#information").style.backgroundColor = "#36622d";
+                document.querySelector("#profile").style.backgroundColor = "#2e6178";
+                document.querySelector("#project").style.backgroundColor = "#b66f16";
+                document.querySelectorAll(".content").forEach(element => {
+                    element.style = "border-color: #e3bd64";
+                });
+            }
+        });
     </script>
 </body>
 </html>
