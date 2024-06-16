@@ -32,8 +32,8 @@
             scroll-margin-top: 8px;
         }
         /* #9a4d36 */
-        .container .information { background-color: #36622d }
-        .container .profile { background-color: #2e6178 }
+        .container .informasi { background-color: #36622d }
+        .container .profil { background-color: #2e6178 }
         .container .karya { background-color: #b66f16 }
         .container section h3 {
             text-align: center;
@@ -49,9 +49,10 @@
             top: 0;
             left: 0;
             z-index: 1;
-            width: 80%;
+            width: 60%;
             height: 100%;
-            background-color: rgba(0, 0, 0, .8);
+            /* background-color: rgba(0, 0, 0, .8); */
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(60, 60, 60, 0.6));
             backdrop-filter: blur(20px);
             color: white;
             padding: 32px;
@@ -92,15 +93,15 @@
             display: block;
             border-radius: 4px;
         }
-        .sidebar ul li a[href="#information"]:hover { background-color: #36622d }
-        .sidebar ul li a[href="#profile"]:hover { background-color: #2e6178 }
+        .sidebar ul li a[href="#informasi"]:hover { background-color: #36622d }
+        .sidebar ul li a[href="#profil"]:hover { background-color: #2e6178 }
         .sidebar ul li a[href="#karya"]:hover { background-color: #b66f16 }
-        .sidebar ul li a[href="#information"]:active { color: #30b416 }
-        .sidebar ul li a[href="#profile"]:active { color: #0c98d8 }
+        .sidebar ul li a[href="#informasi"]:active { color: #30b416 }
+        .sidebar ul li a[href="#profil"]:active { color: #0c98d8 }
         .sidebar ul li a[href="#karya"]:active { color: #ea8102 }
         .sidebar ul li a:active { background-color: rgba(255, 255, 255, 0.1) !important }
         .sidebar-open {
-            display: none;
+            display: grid;
             position: fixed;
             top: 30vh;
             left: 0px;
@@ -113,7 +114,7 @@
             overflow: hidden;
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
-            transition: 0.8s;
+            transition: 0.8s ease-in;
         }
         .sidebar-open:hover {
             background-color: lightcyan;
@@ -160,8 +161,8 @@
             box-shadow: inset 0 0 0 3px black;
         }
         nav ul a, nav ul a:active { color: white }
-        nav ul li a[href="#information"]:active { background-color: #36622d }
-        nav ul li a[href="#profile"]:active { background-color: #2e6178 }
+        nav ul li a[href="#informasi"]:active { background-color: #36622d }
+        nav ul li a[href="#profil"]:active { background-color: #2e6178 }
         nav ul li a[href="#karya"]:active { background-color: #b66f16 }
         
         .hero {
@@ -220,7 +221,7 @@
             grid-template-columns: 1.5fr 1fr;
             gap: 8px;
         }
-        .author .profile img {
+        .author .profil img {
             width: 80px;
             display: block;
             margin: 0 auto 16px;
@@ -271,6 +272,9 @@
         }
 
         @media screen and (max-width: 1024px) {
+            .sidebar {
+                width: 80%;
+            }
             .hero {
                 min-height: inherit;
             }
@@ -278,11 +282,11 @@
                 grid-template-columns: 1fr;
             }
         }
-        @media screen and (min-width: 769px) {
+        /* @media screen and (min-width: 769px) {
             .sidebar, .sidebar-open {
                 display: none !important;
             }
-        }
+        } */
         @media screen and (max-width: 768px) {
             .sidebar-open {
                 display: grid;
@@ -319,6 +323,12 @@
             .sidebar {
                 width: 100%;
             }
+            .sidebar-open {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+            .container {
+                padding: 8px;
+            }
             .container section {
                 padding: 32px 24px !important;
             }
@@ -336,8 +346,8 @@
         </div>
         <div class="body">
             <ul>
-                <li><a onclick="sidebarClose()" href="#information">Information</a></li>
-                <li><a onclick="sidebarClose()" href="#profile">Profile</a></li>
+                <li><a onclick="sidebarClose()" href="#informasi">Informasi</a></li>
+                <li><a onclick="sidebarClose()" href="#profil">Profil</a></li>
                 <li><a onclick="sidebarClose()" href="#karya">Karya</a></li>
             </ul>
         </div>
@@ -353,8 +363,8 @@
             <nav>
                 <h3>Krispachi</h3>
                 <ul>
-                    <li><a href="#information">Information</a></li>
-                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#informasi">Informasi</a></li>
+                    <li><a href="#profil">Profil</a></li>
                     <li><a href="#karya">Karya</a></li>
                 </ul>
             </nav>
@@ -374,15 +384,15 @@
             </div>
     
             <div class="author">
-                <section id="information" class="information">
-                    <h3>💡Information</h3>
+                <section id="informasi" class="informasi">
+                    <h3>💡Informasi</h3>
                     <p>Website ini adalah website yang dibuat oleh Krispachi sebagai tempat untuk menampilkan beberapa hal yang dibuat oleh saya seperti Website atau Program. Disini juga terdapat beberapa informasi mengenai saya.</p><br>
                     <p>Disini saya akan memajang website yang saya buat, baik website sebagai latihan ataupun website yang saya buat saat mempelajari suatu materi mungkin bisa disebut belajar sambil praktek.</p><br>
                     <p>Saya juga suka membuat program selain website seperti Java, tetapi sekarang saya fokus mempelajari pembuatan Web karena di tempat saya Training sedang menggunakan website.</p>
                 </section>
         
-                <section id="profile" class="profile">
-                    <h3>📚Profile</h3>
+                <section id="profil" class="profil">
+                    <h3>📚Profil</h3>
                     <img src="img/krispachi.jpg" alt="Foto Krispachi">
                     <p>Saya Krispachi dan tidak bisa dipanggil Amadeus karena itu bukan nama saya (～￣▽￣)～</p><br> 
                     <p>Nama asli saya Krisna dan saat mengetik teks ini, saya masih berada di bangku kelas 11 Sekolah Menengah Kejuruan (Bukan Kejurusan yak?)</p>
@@ -438,7 +448,7 @@
     
             <footer>
                 <input type="checkbox" class="theme-indigo" id="theme-indigo"><label for="theme-indigo">White-Indigo Theme</label>
-                <p>Krispachi - 02 April 2023</p>
+                <p>Krispachi - 02 April 2023 > 16 Juni 2024</p>
             </footer>
         </div>
     </div>
@@ -490,8 +500,8 @@
                     element.style = "border-color: white";
                 });
             } else {
-                document.querySelector("#information").style.backgroundColor = "#36622d";
-                document.querySelector("#profile").style.backgroundColor = "#2e6178";
+                document.querySelector("#informasi").style.backgroundColor = "#36622d";
+                document.querySelector("#profil").style.backgroundColor = "#2e6178";
                 document.querySelector("#karya").style.backgroundColor = "#b66f16";
                 document.querySelectorAll(".content").forEach(element => {
                     element.style = "border-color: #e3bd64";
