@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krispacho</title>
+    <title>Krispachi - Krisna Ariwidnyana</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -18,7 +19,7 @@
             font-family: 'Space Mono', monospace;
         }
         .container {
-            margin: 64px;
+            padding: 64px;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: repeat(auto-fit, 1fr);
@@ -33,7 +34,7 @@
         /* #9a4d36 */
         .container .information { background-color: #36622d }
         .container .profile { background-color: #2e6178 }
-        .container .project { background-color: #b66f16 }
+        .container .karya { background-color: #b66f16 }
         .container section h3 {
             text-align: center;
             margin-bottom: 16px;
@@ -44,13 +45,17 @@
 
         .sidebar {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 0;
+            left: 0;
+            z-index: 1;
             width: 80%;
-            min-height: 100%;
-            background-color: black;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .8);
+            backdrop-filter: blur(20px);
             color: white;
             padding: 32px;
+            overflow: auto;
         }
         .sidebar .header {
             display: flex;
@@ -58,13 +63,18 @@
             align-items: center;
             margin-bottom: 24px;
         }
-        .sidebar .header div {
+        .sidebar .header .sidebar-close {
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 1fr;
             gap: 4px;
+            padding: 0.9em 0.6em;
+            border-radius: 4px;
         }
-        .sidebar .header div span {
+        .sidebar .header .sidebar-close:hover {
+            background-color: #b7421e;
+        }
+        .sidebar .header .sidebar-close span {
             display: block;
             width: 24px;
             height: 4px;
@@ -72,34 +82,52 @@
         }
         .sidebar .header .sidebar-close span:nth-child(1) { transform: rotate(45deg) translate(3px, 2.7px) }
         .sidebar .header .sidebar-close span:nth-child(2) { transform: rotate(-45deg) translate(3px, -2.7px) }
-        .sidebar .header .sidebar-close:hover > span { background-color: #b7421e }
-        .sidebar ul { list-style: none }
+        .sidebar ul {
+            list-style: none;
+        }
         .sidebar ul li a {
             color: white;
             text-decoration: none;
+            padding: 0.4em 0.6em;
+            display: block;
+            border-radius: 4px;
         }
         .sidebar ul li a[href="#information"]:hover { background-color: #36622d }
         .sidebar ul li a[href="#profile"]:hover { background-color: #2e6178 }
-        .sidebar ul li a[href="#project"]:hover { background-color: #b66f16 }
+        .sidebar ul li a[href="#karya"]:hover { background-color: #b66f16 }
         .sidebar ul li a[href="#information"]:active { color: #30b416 }
         .sidebar ul li a[href="#profile"]:active { color: #0c98d8 }
-        .sidebar ul li a[href="#project"]:active { color: #ea8102 }
-        .sidebar ul li a:active { background-color: black !important }
+        .sidebar ul li a[href="#karya"]:active { color: #ea8102 }
+        .sidebar ul li a:active { background-color: rgba(255, 255, 255, 0.1) !important }
         .sidebar-open {
             display: none;
+            position: fixed;
+            top: 30vh;
+            left: 0px;
+            border: 2px dashed seagreen;
+            padding: 14px;
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
             gap: 4px;
-            width: 24px;
+            width: 20px;
+            overflow: hidden;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            transition: 0.8s;
+        }
+        .sidebar-open:hover {
+            background-color: lightcyan;
+            width: auto;
         }
         .sidebar-open span {
             display: block;
-            width: 24px;
+            width: 4px;
             height: 4px;
             background-color: black;
         }
         .sidebar-open:hover > span {
             background-color: #36622d;
+            width: 24px;
         }
         .sidebar-open, .sidebar-close {
             cursor: pointer;
@@ -134,7 +162,7 @@
         nav ul a, nav ul a:active { color: white }
         nav ul li a[href="#information"]:active { background-color: #36622d }
         nav ul li a[href="#profile"]:active { background-color: #2e6178 }
-        nav ul li a[href="#project"]:active { background-color: #b66f16 }
+        nav ul li a[href="#karya"]:active { background-color: #b66f16 }
         
         .hero {
             display: grid;
@@ -199,33 +227,33 @@
             border-radius: 80px;
         }
 
-        .project .list {
+        .karya .list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 32px;
         }
-        .project .list .content {
+        .karya .list .content {
             border: 4px solid #e3bd64;
             padding: 8px;
         }
-        .project .list .content div {
+        .karya .list .content div {
             padding: 0 16px 16px;
         }
-        .project .list .content img {
+        .karya .list .content img {
             width: 100%;
             margin-bottom: 8px;
         }
-        .project .list .content a {
+        .karya .list .content a {
             font-weight: bold;
             text-decoration: none;
             color: white;
-            text-shadow: 2px 2px #24d60083;
+            text-shadow: 2px 2px #1daf0083;
         }
-        .project .list .content a:hover {
-            text-shadow: 2px 2px #8fff3a83;
+        .karya .list .content a:hover {
+            text-shadow: 2px 2px #79dc2c83;
         }
-        .project .list .content a:active {
-            text-shadow: 2px 2px #16840083;
+        .karya .list .content a:active {
+            text-shadow: 2px 2px #10610083;
         }
 
         footer {
@@ -250,14 +278,18 @@
                 grid-template-columns: 1fr;
             }
         }
+        @media screen and (min-width: 769px) {
+            .sidebar, .sidebar-open {
+                display: none !important;
+            }
+        }
         @media screen and (max-width: 768px) {
             .sidebar-open {
                 display: grid;
-                margin-bottom: 16px;
             }
             
             .container {
-                margin: 32px;
+                padding: 32px;
             }
             .hero {
                 grid-template-areas: 'hero'
@@ -268,14 +300,14 @@
                 grid-template-columns: 1fr;
                 display: none;
             }
-            .project .list {
+            .karya .list {
                 grid-template-columns: 1fr;
             }
-            .project .list .content {
+            .karya .list .content {
                 border: 2px solid #e3bd64;
                 padding: 4px;
             }
-            .project .list .content div {
+            .karya .list .content div {
                 padding: 0 8px 8px;
             }
 
@@ -283,14 +315,17 @@
                 margin-top: 32px;
             }
         }
-        @media screen and (max-width: 425px) {
+        @media screen and (max-width: 426px) {
+            .sidebar {
+                width: 100%;
+            }
             .container section {
                 padding: 32px 24px !important;
             }
         }
     </style>
 </head>
-<body>
+<body onload="ubahSalamWaktu()">
     <div class="sidebar">
         <div class="header">
             <h3>Krispachi</h3>
@@ -299,122 +334,144 @@
                 <span></span>
             </div>
         </div>
-        <ul>
-            <li><a onclick="sidebarClose()" href="#information">Information</a></li>
-            <li><a onclick="sidebarClose()" href="#profile">Profile</a></li>
-            <li><a onclick="sidebarClose()" href="#project">Project</a></li>
-        </ul>
+        <div class="body">
+            <ul>
+                <li><a onclick="sidebarClose()" href="#information">Information</a></li>
+                <li><a onclick="sidebarClose()" href="#profile">Profile</a></li>
+                <li><a onclick="sidebarClose()" href="#karya">Karya</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="container">
+
+    <div class="wrapper">
         <div class="sidebar-open">
             <span></span>
             <span></span>
             <span></span>
         </div>
-
-        <nav>
-            <h3>Krispachi</h3>
-            <ul>
-                <li><a href="#information">Information</a></li>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#project">Project</a></li>
-            </ul>
-        </nav>
-
-        <div class="hero">
-            <div class="header">
-                <h3>Krispache</h3>
-                <p>Sebuah Website Utama yang berisi beberapa</p>
-                <p>informasi mengenai Krispachi</p>
+        <div class="container">
+            <nav>
+                <h3>Krispachi</h3>
+                <ul>
+                    <li><a href="#information">Information</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#karya">Karya</a></li>
+                </ul>
+            </nav>
+    
+            <div class="hero">
+                <div class="header">
+                    <h3>Selamat <span class="waktu">Pagi</span></h3>
+                </div>
+                <div class="github">
+                    <h3>Github</h3>
+                    <p>@Krispachi</p>
+                </div>
+                <div class="youtube">
+                    <h3>YouTube</h3>
+                    <p>@KrisnaOxygen</p>
+                </div>
             </div>
-            <div class="github">
-                <h3>Github</h3>
-                <p>@Krispachi</p>
+    
+            <div class="author">
+                <section id="information" class="information">
+                    <h3>💡Information</h3>
+                    <p>Website ini adalah website yang dibuat oleh Krispachi sebagai tempat untuk menampilkan beberapa hal yang dibuat oleh saya seperti Website atau Program. Disini juga terdapat beberapa informasi mengenai saya.</p><br>
+                    <p>Disini saya akan memajang website yang saya buat, baik website sebagai latihan ataupun website yang saya buat saat mempelajari suatu materi mungkin bisa disebut belajar sambil praktek.</p><br>
+                    <p>Saya juga suka membuat program selain website seperti Java, tetapi sekarang saya fokus mempelajari pembuatan Web karena di tempat saya Training sedang menggunakan website.</p>
+                </section>
+        
+                <section id="profile" class="profile">
+                    <h3>📚Profile</h3>
+                    <img src="img/krispachi.jpg" alt="Foto Krispachi">
+                    <p>Saya Krispachi dan tidak bisa dipanggil Amadeus karena itu bukan nama saya (～￣▽￣)～</p><br> 
+                    <p>Nama asli saya Krisna dan saat mengetik teks ini, saya masih berada di bangku kelas 11 Sekolah Menengah Kejuruan (Bukan Kejurusan yak?)</p>
+                </section>
             </div>
-            <div class="youtube">
-                <h3>YouTube</h3>
-                <p>@KrisnaOxygen</p>
-            </div>
-        </div>
-
-        <div class="author">
-            <section id="information" class="information">
-                <h3>💡Information</h3>
-                <p>Website ini adalah website yang dibuat oleh Krispachi sebagai tempat untuk menampilkan beberapa hal yang dibuat oleh saya seperti Website atau Program. Disini juga terdapat beberapa informasi mengenai saya.</p><br>
-                <p>Disini saya akan memajang website yang saya buat, baik website sebagai latihan ataupun website yang saya buat saat mempelajari suatu materi mungkin bisa disebut belajar sambil praktek.</p><br>
-                <p>Saya juga suka membuat program selain website seperti Java, tetapi sekarang saya fokus mempelajari pembuatan Web karena di tempat saya Training sedang menggunakan website.</p>
+            
+            <section id="karya" class="karya">
+                <h3>🎍Karya</h3>
+                <p>Karena saya suka membuat program karena membuat program dapat melatih pikiran dalam menyelesaikan masalah dengan logika yang masuk akal, sehingga menurut saya membuat program itu seru. Oleh karena itu, dibawah ini saya memajang beberapa Program dan Website yang saya buat dan dapat juga diakses di GitHub.</p><br>
+                <div class="list">
+                    <div class="content">
+                        <img src="img/krispachi-march.png" alt="Krispachi March">
+                        <div>
+                            <h3>Krispachi March</h3>
+                            <p>Krispachi March adalah nama dari website yang saya buat disaat belajar tentang CSS Grid di channel Web Programming UNPAS di YouTube. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isi website di tutorial yang pastinya saya sudah pelajari setiap bagian dari kode yang dipakai untuk membuat websitenya.</p><br>
+                            <a href="https://krispachi.github.io/HTML/krispachi-march" target="_blank">Kunjungi Websitenya</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img src="img/portfolio-alpha.png" alt="Portfolio Alpha">
+                        <div>
+                            <h3>Portfolio Alpha</h3>
+                            <p>Website Portfolio Alpha adalah Website yang saya buat untul latihan belajar menggunakan Bootstrap. Saya menonton tutorial di Channel YouTube Web Programming UNPAS pada video NgoBar #27 sambil mempraktekkan membuat Websitenya dengan memodifikasi beberapa tampilan sesuai keinginan saya.</p><br>
+                            <a href="https://krispachi.github.io/HTML/portfolio-bootstrap5" target="_blank">Kunjungi Websitenya</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img src="img/meng-awan.png" alt="MengAwan">
+                        <div>
+                            <h3>MengAwan</h3>
+                            <p>Website MengAwan adalah website yang aku buat sebagai latihan untuk menggunakan Bootstrap. Aku membuat website ini sambil melihat tutorial di YouTube sekaligus langsung praktek dan aku modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.</p><br>
+                            <a href="https://krispachi.github.io/HTML/myporto" target="_blank">Kunjungi Websitenya</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img src="img/program-kasir-krisna.png" alt="Program Kasir Krisna">
+                        <div>
+                            <h3>Program Kasir Krisna</h3>
+                            <p>Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.</p><br>
+                            <a href="https://github.com/krispachi/Java/tree/main/Program_Kasir_Krisna" target="_blank">Lihat Programnya</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img src="img/navbar-dropdown-jquery.png" alt="Navbar Dropdown JQuery">
+                        <div>
+                            <h3>Navbar Dropdown JQuery</h3>
+                            <p>Saat belajar JQuery di YouTube, saya melatih penggunaan JQuery dengan membuat Navbar Dropdown mengikuti tutorial yang saya tonton dengan memodifikasi langkah-langkah di tutorial. Dalam website ini, saya hanya berfokus dalam menggunakan JQuery saja.</p><br>
+                            <a href="https://krispachi.github.io/HTML/navbar-dropdown-jquery" target="_blank">Kunjungi Websitenya</a>
+                        </div>
+                    </div>
+                </div>
             </section>
     
-            <section id="profile" class="profile">
-                <h3>📚Profile</h3>
-                <img src="img/krispachi.jpg" alt="Foto Krispachi">
-                <p>Saya Krispachi dan tidak bisa dipanggil Amadeus karena itu bukan nama saya (～￣▽￣)～</p><br> 
-                <p>Nama asli saya Krisna dan saat mengetik teks ini, saya masih berada di bangku kelas 11 Sekolah Menengah Kejuruan (Bukan Kejurusan yak?)</p>
-            </section>
+            <footer>
+                <input type="checkbox" class="theme-indigo" id="theme-indigo"><label for="theme-indigo">White-Indigo Theme</label>
+                <p>Krispachi - 02 April 2023</p>
+            </footer>
         </div>
-        
-        <section id="project" class="project">
-            <h3>🎍Projects</h3>
-            <p>Karena saya suka membuat program karena membuat program dapat melatih pikiran dalam menyelesaikan masalah dengan logika yang masuk akal, sehingga menurut saya membuat program itu seru. Oleh karena itu, dibawah ini saya memajang beberapa Program dan Website yang saya buat dan dapat juga diakses di GitHub.</p><br>
-            <div class="list">
-                <div class="content">
-                    <img src="img/krispachi-march.png" alt="Krispachi March">
-                    <div>
-                        <h3>Krispachi March</h3>
-                        <p>Krispachi March adalah nama dari website yang saya buat disaat belajar tentang CSS Grid di channel Web Programming UNPAS di YouTube. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isi website di tutorial yang pastinya saya sudah pelajari setiap bagian dari kode yang dipakai untuk membuat websitenya.</p><br>
-                        <a href="https://krispachi.github.io/HTML/krispachi-march" target="_blank">Kunjungi Websitenya</a>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="img/portfolio-alpha.png" alt="Portfolio Alpha">
-                    <div>
-                        <h3>Portfolio Alpha</h3>
-                        <p>Website Portfolio Alpha adalah Website yang saya buat untul latihan belajar menggunakan Bootstrap. Saya menonton tutorial di Channel YouTube Web Programming UNPAS pada video NgoBar #27 sambil mempraktekkan membuat Websitenya dengan memodifikasi beberapa tampilan sesuai keinginan saya.</p><br>
-                        <a href="https://krispachi.github.io/HTML/portfolio-bootstrap5" target="_blank">Kunjungi Websitenya</a>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="img/meng-awan.png" alt="MengAwan">
-                    <div>
-                        <h3>MengAwan</h3>
-                        <p>Website MengAwan adalah website yang aku buat sebagai latihan untuk menggunakan Bootstrap. Aku membuat website ini sambil melihat tutorial di YouTube sekaligus langsung praktek dan aku modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.</p><br>
-                        <a href="https://krispachi.github.io/HTML/myporto" target="_blank">Kunjungi Websitenya</a>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="img/program-kasir-krisna.png" alt="Program Kasir Krisna">
-                    <div>
-                        <h3>Program Kasir Krisna</h3>
-                        <p>Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.</p><br>
-                        <a href="https://github.com/krispachi/Java/tree/main/Program_Kasir_Krisna" target="_blank">Lihat Programnya</a>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="img/navbar-dropdown-jquery.png" alt="Navbar Dropdown JQuery">
-                    <div>
-                        <h3>Navbar Dropdown JQuery</h3>
-                        <p>Saat belajar JQuery di YouTube, saya melatih penggunaan JQuery dengan membuat Navbar Dropdown mengikuti tutorial yang saya tonton dengan memodifikasi langkah-langkah di tutorial. Dalam website ini, saya hanya berfokus dalam menggunakan JQuery saja.</p><br>
-                        <a href="https://krispachi.github.io/HTML/navbar-dropdown-jquery" target="_blank">Kunjungi Websitenya</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <input type="checkbox" class="theme-indigo" id="theme-indigo"><label for="theme-indigo">White-Indigo Theme</label>
-            <p>Krispachi - 02 April 2023</p>
-        </footer>
     </div>
 
     <script>
+        function ubahSalamWaktu() {
+            let tanggal = new Date();
+            let jam = tanggal.getHours();
+            if(jam < 11) {
+                waktu = "Pagi";
+            } else if(jam < 15) {
+                waktu = "Siang";
+            } else if(jam < 18) {
+                waktu = "Sore";
+            } else {
+                waktu = "Malam";
+            }
+            document.querySelector(".waktu").innerText = waktu;
+        };
+
         document.querySelector(".sidebar-open").addEventListener("click", function() {
             document.querySelector(".sidebar").style.display = "inherit";
+            this.style.display = "none";
         });
         document.querySelector(".sidebar-close").addEventListener("click", function() {
-            sidebarClose()
+            sidebarClose();
+        });
+        document.querySelector(".container").addEventListener("click", function() {
+            sidebarClose();
         });
         function sidebarClose() {
             document.querySelector(".sidebar").style.display = "none";
+            document.querySelector(".sidebar-open").style.display = "grid";
         }
         
         document.querySelector(".hero .github").addEventListener("click", function() {
@@ -435,7 +492,7 @@
             } else {
                 document.querySelector("#information").style.backgroundColor = "#36622d";
                 document.querySelector("#profile").style.backgroundColor = "#2e6178";
-                document.querySelector("#project").style.backgroundColor = "#b66f16";
+                document.querySelector("#karya").style.backgroundColor = "#b66f16";
                 document.querySelectorAll(".content").forEach(element => {
                     element.style = "border-color: #e3bd64";
                 });

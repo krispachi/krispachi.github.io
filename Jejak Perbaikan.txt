@@ -1,0 +1,5 @@
+Sidebar {
+    Tombol
+    Isi
+}
+Perbaiki bahasa dan isi teks
