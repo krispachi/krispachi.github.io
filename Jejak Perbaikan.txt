@@ -1,5 +1,5 @@
-Sidebar {
-    Tombol
-    Isi
+Tambahkan Karya/Proyek {
+    POS App
+    Krisna Laundry
+    Surat Digistik
 }
-Perbaiki bahasa dan isi teks

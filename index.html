@@ -18,6 +18,10 @@
         body {
             font-family: 'Space Mono', monospace;
         }
+        .merek-website a {
+            text-decoration: none;
+            color: inherit;
+        }
         .container {
             padding: 64px;
             display: grid;
@@ -80,6 +84,7 @@
             width: 24px;
             height: 4px;
             background-color: white;
+            border-radius: 1px;
         }
         .sidebar .header .sidebar-close span:nth-child(1) { transform: rotate(45deg) translate(3px, 2.7px) }
         .sidebar .header .sidebar-close span:nth-child(2) { transform: rotate(-45deg) translate(3px, -2.7px) }
@@ -120,11 +125,16 @@
             background-color: lightcyan;
             width: auto;
         }
+        .sidebar-open:active {
+            transition: none;
+            filter: invert(100%);
+        }
         .sidebar-open span {
             display: block;
             width: 4px;
             height: 4px;
             background-color: black;
+            border-radius: 1px;
         }
         .sidebar-open:hover > span {
             background-color: #36622d;
@@ -218,8 +228,11 @@
 
         .author {
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
+            grid-template-columns: 1.4fr 1fr;
             gap: 8px;
+        }
+        .author .profil {
+            text-align: justify;
         }
         .author .profil img {
             width: 80px;
@@ -269,6 +282,26 @@
         footer input {
             margin-bottom: 1em;
             accent-color: indigo;
+        }
+        footer .footer-list {
+            display: inline-block;
+            list-style-type: none;
+            border-left: 3px solid teal;
+            padding: 0 1em;
+            text-align: start;
+        }
+        footer .footer-list li {
+            position: relative;
+        }
+        footer .footer-list li::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: -1em;
+            top: calc(50% - 2px / 2 );
+            width: 7px;
+            height: 3px;
+            background-color: teal;
         }
 
         @media screen and (max-width: 1024px) {
@@ -333,12 +366,25 @@
                 padding: 32px 24px !important;
             }
         }
+
+        .pb-0-5 {
+            padding-bottom: 0.5em;
+        }
+        .pb-1 {
+            padding-bottom: 1em;
+        }
+        .pb-2 {
+            padding-bottom: 2em;
+        }
+        .pb-3 {
+            padding-bottom: 3em;
+        }
     </style>
 </head>
 <body onload="ubahSalamWaktu()">
     <div class="sidebar">
         <div class="header">
-            <h3>Krispachi</h3>
+            <h3 class="merek-website"><a href="https://krispachi.github.io">Krispachi</a></h3>
             <div class="sidebar-close">
                 <span></span>
                 <span></span>
@@ -361,7 +407,7 @@
         </div>
         <div class="container">
             <nav>
-                <h3>Krispachi</h3>
+                <h3 class="merek-website"><a href="https://krispachi.github.io">Krispachi</a></h3>
                 <ul>
                     <li><a href="#informasi">Informasi</a></li>
                     <li><a href="#profil">Profil</a></li>
@@ -374,7 +420,7 @@
                     <h3>Selamat <span class="waktu">Pagi</span></h3>
                 </div>
                 <div class="github">
-                    <h3>Github</h3>
+                    <h3>GitHub</h3>
                     <p>@Krispachi</p>
                 </div>
                 <div class="youtube">
@@ -386,22 +432,34 @@
             <div class="author">
                 <section id="informasi" class="informasi">
                     <h3>💡Informasi</h3>
-                    <p>Website ini adalah website yang dibuat oleh Krispachi sebagai tempat untuk menampilkan beberapa hal yang dibuat oleh saya seperti Website atau Program. Disini juga terdapat beberapa informasi mengenai saya.</p><br>
-                    <p>Disini saya akan memajang website yang saya buat, baik website sebagai latihan ataupun website yang saya buat saat mempelajari suatu materi mungkin bisa disebut belajar sambil praktek.</p><br>
-                    <p>Saya juga suka membuat program selain website seperti Java, tetapi sekarang saya fokus mempelajari pembuatan Web karena di tempat saya Training sedang menggunakan website.</p>
+                    <p>Selamat datang di website yang dibuat oleh Krispachi untuk memajang sesuatu yang saya pernah buat dengan coding. Disini juga terdapat beberapa informasi mengenai saya.</p><br>
+                    <p>Pada website ini saya isi dengan: Website yang dibuat saat belajar sebagai latihan; Website yang dibuat dari permintaan seseorang; Dan tidak hanya website, bahkan ada software yang pernah saya buat. Kedepannya, mungkin ada yang lebih dari itu.</p>
                 </section>
         
                 <section id="profil" class="profil">
                     <h3>📚Profil</h3>
                     <img src="img/krispachi.jpg" alt="Foto Krispachi">
-                    <p>Saya Krispachi dan tidak bisa dipanggil Amadeus karena itu bukan nama saya (～￣▽￣)～</p><br> 
-                    <p>Nama asli saya Krisna dan saat mengetik teks ini, saya masih berada di bangku kelas 11 Sekolah Menengah Kejuruan (Bukan Kejurusan yak?)</p>
+                    <p>Halou, saya Krisna Ariwidnyana (Krispachi). Saya mulai suka belajar coding setelah melihat banyak kurung kurawal tutup ("}") di sebuah file JSON. Sampai sekarang saya masih belajar tentang pemrograman.</p>
                 </section>
             </div>
             
             <section id="karya" class="karya">
                 <h3>🎍Karya</h3>
-                <p>Karena saya suka membuat program karena membuat program dapat melatih pikiran dalam menyelesaikan masalah dengan logika yang masuk akal, sehingga menurut saya membuat program itu seru. Oleh karena itu, dibawah ini saya memajang beberapa Program dan Website yang saya buat dan dapat juga diakses di GitHub.</p><br>
+                <p class="pb-1">Saya suka membuat program karena dapat melatih cara berpikir dalam menyelesaikan masalah dengan logika yang masuk akal. Oleh karena itu, dibawah ini saya memajang beberapa program yang saya buat dan beberapa dapat diakses di GitHub saya.</p>
+
+                <!-- <h3 class="pb-0-5">🪴Proyek</h3>
+                <div class="list pb-3">
+                    <div class="content">
+                        <img src="img/krispachi-march.png" alt="Krispachi March">
+                        <div>
+                            <h3>Krispachi March</h3>
+                            <p>Krispachi March adalah nama dari website yang saya buat disaat belajar tentang CSS Grid di channel Web Programming UNPAS di YouTube. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isi website di tutorial yang pastinya saya sudah pelajari setiap bagian dari kode yang dipakai untuk membuat websitenya.</p><br>
+                            <a href="https://krispachi.github.io/HTML/krispachi-march" target="_blank">Kunjungi Websitenya</a>
+                        </div>
+                    </div>
+                </div> -->
+
+                <h3 class="pb-0-5">🌱Latihan</h3>
                 <div class="list">
                     <div class="content">
                         <img src="img/krispachi-march.png" alt="Krispachi March">
@@ -423,7 +481,7 @@
                         <img src="img/meng-awan.png" alt="MengAwan">
                         <div>
                             <h3>MengAwan</h3>
-                            <p>Website MengAwan adalah website yang aku buat sebagai latihan untuk menggunakan Bootstrap. Aku membuat website ini sambil melihat tutorial di YouTube sekaligus langsung praktek dan aku modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.</p><br>
+                            <p>Website MengAwan adalah website yang saya buat sebagai latihan untuk menggunakan Bootstrap. Saya membuat website ini sambil melihat tutorial di YouTube sekaligus langsung praktek dan saya modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.</p><br>
                             <a href="https://krispachi.github.io/HTML/myporto" target="_blank">Kunjungi Websitenya</a>
                         </div>
                     </div>
@@ -431,7 +489,7 @@
                         <img src="img/program-kasir-krisna.png" alt="Program Kasir Krisna">
                         <div>
                             <h3>Program Kasir Krisna</h3>
-                            <p>Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yaitu data dapat disimpan langsung didalam folder program sehingga tidak memerlukan aplikasi tambahan untuk menggunakan database dan dengan catatan sudah menginstall JDK.</p><br>
+                            <p>Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yang membuat program bisa jalan tanpa install XAMPP. Program ini saya buat untuk tugas sekolah, mungkin kurang cocok untuk fungsi sebenarnya.</p><br>
                             <a href="https://github.com/krispachi/Java/tree/main/Program_Kasir_Krisna" target="_blank">Lihat Programnya</a>
                         </div>
                     </div>
@@ -439,7 +497,7 @@
                         <img src="img/navbar-dropdown-jquery.png" alt="Navbar Dropdown JQuery">
                         <div>
                             <h3>Navbar Dropdown JQuery</h3>
-                            <p>Saat belajar JQuery di YouTube, saya melatih penggunaan JQuery dengan membuat Navbar Dropdown mengikuti tutorial yang saya tonton dengan memodifikasi langkah-langkah di tutorial. Dalam website ini, saya hanya berfokus dalam menggunakan JQuery saja.</p><br>
+                            <p>Saat belajar JQuery di YouTube, saya melatih penggunaan JQuery dengan membuat Navbar Dropdown mengikuti tutorial yang saya tonton dengan memodifikasi langkah-langkah di tutorial. Dalam website ini, saya hanya berfokus dalam penggunaan JQuery saja.</p><br>
                             <a href="https://krispachi.github.io/HTML/navbar-dropdown-jquery" target="_blank">Kunjungi Websitenya</a>
                         </div>
                     </div>
@@ -448,7 +506,11 @@
     
             <footer>
                 <input type="checkbox" class="theme-indigo" id="theme-indigo"><label for="theme-indigo">White-Indigo Theme</label>
-                <p>Krispachi - 02 April 2023 > 16 Juni 2024</p>
+                <p>Krispachi</p>
+                <ol class="footer-list">
+                    <li>16 Juni 2024</li>
+                    <li>02 April 2023</li>
+                </ol>
             </footer>
         </div>
     </div>
