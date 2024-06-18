@@ -1,5 +1,0 @@
-Tambahkan Karya/Proyek {
-    POS App
-    Krisna Laundry
-    Surat Digistik
-}
