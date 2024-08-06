@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tambah Barang - POS App (Demo)</title>
+    <link rel="shortcut icon" href="../aset/img/logo.jpg" type="image/jpg">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../aset/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../aset/adminlte/dist/css/adminlte.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        .modal-content {
+            box-shadow: none;
+        }
+        .nav-sidebar .nav-link.button-logout:hover {
+            background-color: var(--danger) !important;
+        }
+
+        .sorting_disabled.sorting_asc {
+            cursor: default !important;
+        }
+        .sorting_disabled.sorting_asc::before, .sorting_disabled.sorting_asc::after {
+            content: "" !important;
+        }
+
+        .dataTables_paginate ul.pagination {
+            flex-wrap: wrap
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-info elevation-4">
+        <!-- Brand Logo -->
+        <a href="../index.html" class="brand-link">
+            <img src="../aset/img/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">POS App</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="../aset/img/user.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a class="d-block">Admin</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input type="text" name="AdminLTE-sidebar-search" class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column mb-5" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">BERANDA</li>
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">PRODUK</li>
+                <li class="nav-item">
+                    <a href="../barang/index.html" class="nav-link active">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p>
+                            Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../barang/stok.html" class="nav-link">
+                        <i class="nav-icon fas fa-layer-group"></i>
+                        <p>
+                            Stok Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">TRANSAKSI</li>
+                <li class="nav-item">
+                    <a href="../penjualan/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Penjualan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../pembelian/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-truck-loading"></i>
+                        <p>
+                            Pembelian
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../barang/penyesuaian-stok.html" class="nav-link">
+                        <i class="nav-icon fas fa-pen-square"></i>
+                        <p>
+                            Penyesuaian Stok
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../jurnal-umum/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Jurnal Umum
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">LAPORAN</li>
+                <li class="nav-item">
+                    <a href="../penjualan/laporan.html" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-check"></i>
+                        <p>
+                            Summary Penjualan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../penjualan/laporan-detail.html" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>
+                            Detail Penjualan
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../pembelian/laporan.html" class="nav-link">
+                        <i class="nav-icon fas fa-dolly-flatbed"></i>
+                        <p>
+                            Summary Pembelian
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../pembelian/laporan-detail.html" class="nav-link">
+                        <i class="nav-icon fas fa-dolly"></i>
+                        <p>
+                            Detail Pembelian
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../laporan/laba-rugi.html" class="nav-link">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p>
+                            Laporan Laba Rugi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../laporan/neraca.blade.php" class="nav-link">
+                        <i class="nav-icon fas fa-balance-scale"></i>
+                        <p>
+                            Laporan Neraca
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../laporan/buku-besar.html" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Laporan Buku Besar
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">PENGGUNA</li>
+                <li class="nav-item">
+                    <a href="../pembeli/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-address-card"></i>
+                        <p>
+                            Pembeli
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../suplier/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-boxes"></i>
+                        <p>
+                            Suplier
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../user/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Daftar Pengguna
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">AKUN</li>
+                <li class="nav-item">
+                    <a href="../login/index.html" class="nav-link button-logout">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>
+                            Log Out
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Tambah Barang</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="../barang/index.html">Barang</a></li>
+                            <li class="breadcrumb-item active">Tambah</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <form action="../barang/index.html?dari=create" method="post">
+                                <div class="card-header">
+                                    <h4 class="card-title">Form Barang</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="kd_barang" class="form-label">Kode Barang</label>
+                                        <input type="text" name="kd_barang" class="form-control" id="kd_barang" placeholder="Masukkan Kode Barang" required autofocus>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama_barang" class="form-label">Nama Barang</label>
+                                        <input type="text" name="nama_barang" class="form-control" id="nama_barang" placeholder="Masukkan Nama Barang" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="harga_beli" class="form-label">Harga Beli</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Rp.</span>
+                                            </div>
+                                            <input type="number" name="harga_beli" class="form-control" id="harga_beli" placeholder="Masukkan Harga Beli">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="harga_jual" class="form-label">Harga Jual</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Rp.</span>
+                                            </div>
+                                            <input type="number" name="harga_jual" class="form-control" id="harga_jual" placeholder="Masukkan Harga Jual" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="stok" class="form-label">Stok</label>
+                                        <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok">
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle fa-sm">&nbsp;</i> Tambah</button>
+                                    <a href="../barang/index.html" class="btn btn-secondary"><i class="fas fa-chevron-circle-left fa-sm">&nbsp;</i> Kembali</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <strong>2023/2024 - Website Point Of Sale
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Versi</b> 1.3.0
+        </div>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../aset/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../aset/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../aset/adminlte/dist/js/adminlte.js"></script>
+</body>
+</html>

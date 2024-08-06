@@ -115,7 +115,7 @@
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
             gap: 4px;
-            width: 20px;
+            width: auto;
             overflow: hidden;
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
@@ -123,7 +123,6 @@
         }
         .sidebar-open:hover {
             background-color: lightcyan;
-            width: auto;
         }
         .sidebar-open:active {
             transition: none;
@@ -135,6 +134,7 @@
             height: 4px;
             background-color: black;
             border-radius: 1px;
+            transition: 0.2s ease-in;
         }
         .sidebar-open:hover > span {
             background-color: #36622d;
@@ -207,6 +207,15 @@
             text-align: center;
             min-height: 160px;
             cursor: pointer;
+            transition: 1s ease;
+        }
+        .hero .github:hover, 
+        .hero .youtube:hover {
+            background-position: top;
+        }
+        .hero .github:active, 
+        .hero .youtube:active {
+            background-position: bottom;
         }
         .hero .github p::before, 
         .hero .youtube p::before {
@@ -268,6 +277,15 @@
         }
         .karya .list .content a:active {
             text-shadow: 2px 2px #10610083;
+        }
+        .karya .list .content a.link-mati {
+            text-shadow: 2px 2px #0034af83;
+        }
+        .karya .list .content a.link-mati:hover {
+            text-shadow: 2px 2px #2c6fdc83;
+        }
+        .karya .list .content a.link-mati:active {
+            text-shadow: 2px 2px #001b6183;
         }
 
         footer {
@@ -445,24 +463,44 @@
             
             <section id="karya" class="karya">
                 <h3>🎍Karya</h3>
-                <p class="pb-1">Saya suka membuat program karena dapat melatih cara berpikir dalam menyelesaikan masalah dengan logika yang masuk akal. Oleh karena itu, dibawah ini saya memajang beberapa program yang saya buat dan beberapa dapat diakses di GitHub saya.</p>
+                <p class="pb-2">Saya suka membuat program karena dapat melatih cara berpikir dalam menyelesaikan masalah dengan logika yang masuk akal. Oleh karena itu, dibawah ini saya memajang beberapa program yang saya buat dan beberapa dapat diakses di GitHub saya.</p>
 
-                <!-- <h3 class="pb-0-5">🪴Proyek</h3>
+                <h3 class="pb-0-5">🪴Proyek</h3>
                 <div class="list pb-3">
                     <div class="content">
-                        <img src="img/krispachi-march.png" alt="Krispachi March">
+                        <img src="img/proyek/pos-app.png" alt="POS App">
                         <div>
-                            <h3>Krispachi March</h3>
-                            <p>Krispachi March adalah nama dari website yang saya buat disaat belajar tentang CSS Grid di channel Web Programming UNPAS di YouTube. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isi website di tutorial yang pastinya saya sudah pelajari setiap bagian dari kode yang dipakai untuk membuat websitenya.</p><br>
-                            <a href="https://krispachi.github.io/HTML/krispachi-march" target="_blank">Kunjungi Websitenya</a>
+                            <h3>POS App</h3>
+                            <p>POS App adalah website yang dibuat dengan Laravel 10. Website ini bisa digunakan sebagai kasir untuk toko karena berisi fitur Tambah Barang, Penjualan, Pembelian, Pembeli, Suplier, Jurnal Umum. Lengkap dengan Laporan Penjualan dan Pembelian, Laporan Laba Rugi, Laporan Neraca, dan Buku Besar.</p><br>
+                            <p>Website ini dipesan oleh salah satu guru di SMKN 1 Mas Ubud dan pernah dipakai untuk kasir di acara YEC SMKN 1 Mas Ubud. YEC adalah kegiatan yang memberikan kesempatan dan pengalaman kepada peserta didik untuk menumbuhkan potensi diri, kreativitas dan jiwa wirausaha sejak dini.</p><br>
+                            <p>(Versi Demo belum selesai)</p><br>
+                            <a href="https://krispachi.github.io/proyek/pos-app_demo/index.html" class="link-proyek" target="_blank">Kunjungi Websitenya</a>
                         </div>
                     </div>
-                </div> -->
+                    <div class="content">
+                        <img src="img/proyek/krisna-laundry.png" alt="Krisna Laundry">
+                        <div>
+                            <h3>Krisna Laundry</h3>
+                            <p>Website untuk mencatat transaksi Laundry.</p><br>
+                            <p>(Versi Demo akan Segera Hadir)</p><br>
+                            <!-- <a href="#" class="link-mati" target="_blank">Kunjungi Websitenya</a> -->
+                        </div>
+                    </div>
+                    <div class="content">
+                        <img src="img/proyek/surat-digistik.png" alt="Surat Digistik">
+                        <div>
+                            <h3>Surat Digistik</h3>
+                            <p>Website untuk menghasilkan surat dalam bentuk PDF yang isinya dari form.</p><br>
+                            <p>(Versi Demo akan Segera Hadir)</p><br>
+                            <!-- <a href="#" class="link-mati" target="_blank">Kunjungi Websitenya</a> -->
+                        </div>
+                    </div>
+                </div>
 
                 <h3 class="pb-0-5">🌱Latihan</h3>
                 <div class="list">
                     <div class="content">
-                        <img src="img/krispachi-march.png" alt="Krispachi March">
+                        <img src="img/latihan/krispachi-march.png" alt="Krispachi March">
                         <div>
                             <h3>Krispachi March</h3>
                             <p>Krispachi March adalah nama dari website yang saya buat disaat belajar tentang CSS Grid di channel Web Programming UNPAS di YouTube. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isi website di tutorial yang pastinya saya sudah pelajari setiap bagian dari kode yang dipakai untuk membuat websitenya.</p><br>
@@ -470,7 +508,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <img src="img/portfolio-alpha.png" alt="Portfolio Alpha">
+                        <img src="img/latihan/portfolio-alpha.png" alt="Portfolio Alpha">
                         <div>
                             <h3>Portfolio Alpha</h3>
                             <p>Website Portfolio Alpha adalah Website yang saya buat untul latihan belajar menggunakan Bootstrap. Saya menonton tutorial di Channel YouTube Web Programming UNPAS pada video NgoBar #27 sambil mempraktekkan membuat Websitenya dengan memodifikasi beberapa tampilan sesuai keinginan saya.</p><br>
@@ -478,7 +516,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <img src="img/meng-awan.png" alt="MengAwan">
+                        <img src="img/latihan/meng-awan.png" alt="MengAwan">
                         <div>
                             <h3>MengAwan</h3>
                             <p>Website MengAwan adalah website yang saya buat sebagai latihan untuk menggunakan Bootstrap. Saya membuat website ini sambil melihat tutorial di YouTube sekaligus langsung praktek dan saya modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.</p><br>
@@ -486,7 +524,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <img src="img/program-kasir-krisna.png" alt="Program Kasir Krisna">
+                        <img src="img/latihan/program-kasir-krisna.png" alt="Program Kasir Krisna">
                         <div>
                             <h3>Program Kasir Krisna</h3>
                             <p>Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yang membuat program bisa jalan tanpa install XAMPP. Program ini saya buat untuk tugas sekolah, mungkin kurang cocok untuk fungsi sebenarnya.</p><br>
@@ -494,7 +532,7 @@
                         </div>
                     </div>
                     <div class="content">
-                        <img src="img/navbar-dropdown-jquery.png" alt="Navbar Dropdown JQuery">
+                        <img src="img/latihan/navbar-dropdown-jquery.png" alt="Navbar Dropdown JQuery">
                         <div>
                             <h3>Navbar Dropdown JQuery</h3>
                             <p>Saat belajar JQuery di YouTube, saya melatih penggunaan JQuery dengan membuat Navbar Dropdown mengikuti tutorial yang saya tonton dengan memodifikasi langkah-langkah di tutorial. Dalam website ini, saya hanya berfokus dalam penggunaan JQuery saja.</p><br>
@@ -516,6 +554,7 @@
     </div>
 
     <script>
+        // Membuat waktu di hero menjadi dinamis
         function ubahSalamWaktu() {
             let tanggal = new Date();
             let jam = tanggal.getHours();
@@ -531,6 +570,7 @@
             document.querySelector(".waktu").innerText = waktu;
         };
 
+        // Membuka dan menutup sidebar
         document.querySelector(".sidebar-open").addEventListener("click", function() {
             document.querySelector(".sidebar").style.display = "inherit";
             this.style.display = "none";
@@ -545,7 +585,8 @@
             document.querySelector(".sidebar").style.display = "none";
             document.querySelector(".sidebar-open").style.display = "grid";
         }
-        
+
+        // Redirect jika klik hero
         document.querySelector(".hero .github").addEventListener("click", function() {
             window.open("https://github.com/krispachi")
         });
@@ -553,6 +594,7 @@
             window.open("https://www.youtube.com/@krisnaoxygen")
         });
         
+        // Mengubah tema menjadi indigo-putih
         document.querySelector(".theme-indigo").addEventListener("change", function() {
             if(this.checked) {
                 document.querySelectorAll("section").forEach(element => {
@@ -570,6 +612,11 @@
                 });
             }
         });
+
+        // Mengubah URL proyek sesuai domain
+        document.querySelectorAll(".link-proyek").forEach(function(elemen) {
+            elemen.setAttribute("href", elemen.getAttribute("href").replace("https://krispachi.github.io", window.location.pathname.replace("/index.html", "")));
+        });        
     </script>
 </body>
 </html>

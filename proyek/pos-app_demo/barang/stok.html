@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stok Barang - POS App (Demo)</title>
+    <link rel="shortcut icon" href="../aset/img/logo.jpg" type="image/jpg">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../aset/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../aset/adminlte/dist/css/adminlte.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        .modal-content {
+            box-shadow: none;
+        }
+        .nav-sidebar .nav-link.button-logout:hover {
+            background-color: var(--danger) !important;
+        }
+
+        .sorting_disabled.sorting_asc {
+            cursor: default !important;
+        }
+        .sorting_disabled.sorting_asc::before, .sorting_disabled.sorting_asc::after {
+            content: "" !important;
+        }
+
+        .dataTables_paginate ul.pagination {
+            flex-wrap: wrap
+        }
+    </style>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../aset/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../aset/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../aset/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-info elevation-4">
+        <!-- Brand Logo -->
+        <a href="../index.html" class="brand-link">
+            <img src="../aset/img/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">POS App</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="../aset/img/user.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a class="d-block">Admin</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input type="text" name="AdminLTE-sidebar-search" class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column mb-5" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">BERANDA</li>
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">PRODUK</li>
+                <li class="nav-item">
+                    <a href="../barang/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p>
+                            Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../barang/stok.html" class="nav-link active">
+                        <i class="nav-icon fas fa-layer-group"></i>
+                        <p>
+                            Stok Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">TRANSAKSI</li>
+                <li class="nav-item">
+                    <a href="../penjualan/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Penjualan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../pembelian/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-truck-loading"></i>
+                        <p>
+                            Pembelian
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../barang/penyesuaian-stok.html" class="nav-link">
+                        <i class="nav-icon fas fa-pen-square"></i>
+                        <p>
+                            Penyesuaian Stok
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../jurnal-umum/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Jurnal Umum
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">LAPORAN</li>
+                <li class="nav-item">
+                    <a href="../penjualan/laporan.html" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-check"></i>
+                        <p>
+                            Summary Penjualan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../penjualan/laporan-detail.html" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>
+                            Detail Penjualan
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../pembelian/laporan.html" class="nav-link">
+                        <i class="nav-icon fas fa-dolly-flatbed"></i>
+                        <p>
+                            Summary Pembelian
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../pembelian/laporan-detail.html" class="nav-link">
+                        <i class="nav-icon fas fa-dolly"></i>
+                        <p>
+                            Detail Pembelian
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../laporan/laba-rugi.html" class="nav-link">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p>
+                            Laporan Laba Rugi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../laporan/neraca.blade.php" class="nav-link">
+                        <i class="nav-icon fas fa-balance-scale"></i>
+                        <p>
+                            Laporan Neraca
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../laporan/buku-besar.html" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Laporan Buku Besar
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">PENGGUNA</li>
+                <li class="nav-item">
+                    <a href="../pembeli/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-address-card"></i>
+                        <p>
+                            Pembeli
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../suplier/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-boxes"></i>
+                        <p>
+                            Suplier
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../user/index.html" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Daftar Pengguna
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">AKUN</li>
+                <li class="nav-item">
+                    <a href="../login/index.html" class="nav-link button-logout">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>
+                            Log Out
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Stok Barang</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="../barang/index.html">Barang</a></li>
+                            <li class="breadcrumb-item active">Stok</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="card-title">Tabel Stok Barang</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 col-md form-group">
+                                        <label for="tanggal">Tanggal:</label>
+                                        <input type="datetime-local" step="1" id="tanggal" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 form-group">
+                                        <label for="barang">Barang:</label>
+                                        <select name="barang" id="barang" class="form-control js-example-basic-single" style="width: 100%;">
+                                            <option value="">Semua Barang</option>
+                                            <option value="abc-abc-abc-1">Akua (abc-abc-abc-1)</option>
+                                            <option value="abc-abc-abc-2">Air Minum (abc-abc-abc-2)</option>
+                                            <option value="abc-abc-abc-3">Air Sungai Jernih (abc-abc-abc-3)</option>
+                                            <option value="abc-abc-abc-4">Uap Air Laut (abc-abc-abc-4)</option>
+                                            <option value="abc-abc-abc-5">Air Hujan Tersaring (abc-abc-abc-5)</option>
+                                            <option value="abc-abc-abc-6">Air Bambu Alami (abc-abc-abc-6)</option>
+                                            <option value="abc-abc-abc-7">Cairan Bening siap Minum (abc-abc-abc-7)</option>
+                                            <option value="abc-abc-abc-8">Air Jernih Mengejutkan (abc-abc-abc-8)</option>
+                                            <option value="abc-abc-abc-9">Air Mata Dewa (abc-abc-abc-9)</option>
+                                            <option value="abc-abc-abc-10">Air di Minikrep (abc-abc-abc-10)</option>
+                                            <option value="abc-abc-abc-11">Air Tawar (abc-abc-abc-11)</option>
+                                            <option value="abc-abc-abc-12">Air Suci (abc-abc-abc-12)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 mt-auto">
+                                        <button id="filter_button" class="btn btn-success mb-3">Filter</button>
+                                    </div>
+                                </div>
+        
+                                <table class="table table-hover table-bordered table-striped nowrap" id="tableStokBarang" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>#&nbsp;&nbsp;</th>
+                                            <th>Kode Reff (No)</th>
+                                            <th>Barang (Kode)</th>
+                                            <th>Jml Masuk</th>
+                                            <th>Jml Keluar</th>
+                                            <th>Tanggal</th>
+                                            <th>User (ID)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Akua (abc-abc-abc-1)</td>
+                                            <td>4649</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Minum (abc-abc-abc-2)</td>
+                                            <td>084</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Sungai Jernih (abc-abc-abc-3)</td>
+                                            <td>0833</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Uap Air Laut (abc-abc-abc-4)</td>
+                                            <td>3344</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Hujan Tersaring (abc-abc-abc-5)</td>
+                                            <td>5963</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Bambu Alami (abc-abc-abc-6)</td>
+                                            <td>8782</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Cairan Bening siap Minum (abc-abc-abc-7)</td>
+                                            <td>39</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Jernih Mengejutkan (abc-abc-abc-8)</td>
+                                            <td>3470</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Mata Dewa (abc-abc-abc-9)</td>
+                                            <td>893</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air di Minikrep (abc-abc-abc-10)</td>
+                                            <td>∞</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Tawar (abc-abc-abc-11)</td>
+                                            <td>81</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>saldo awal (0)</td>
+                                            <td>Air Suci (abc-abc-abc-12)</td>
+                                            <td>59</td>
+                                            <td>0</td>
+                                            <td>2024-07-07T14:07:38</td>
+                                            <td>Admin (3)</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <th class="text-right">Total: </th>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <strong>2023/2024 - Website Point Of Sale
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Versi</b> 1.3.0
+        </div>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../aset/adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../aset/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../aset/adminlte/dist/js/adminlte.js"></script>
+
+<!-- DataTables  & Plugins -->
+<script src="../aset/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../aset/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../aset/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../aset/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../aset/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../aset/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../aset/adminlte/plugins/jszip/jszip.min.js"></script>
+<script src="../aset/adminlte/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../aset/adminlte/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../aset/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../aset/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../aset/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<!-- Select2 -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        function sweetAlert2(status, pesan) {
+            Swal.fire({
+                icon: status,
+                title: pesan,
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        }
+        
+        $('.js-example-basic-single').select2();
+
+        let table = new DataTable('#tableStokBarang', {
+            responsive: true,
+            footerCallback: function (row, data, start, end, display) {
+                // let api = this.api();
+                // let json = api.ajax.json();
+                
+                // // Total harga beli
+                // let jumlahBeli = api.column(3, { page: 'current' }).data();
+                // let totalJumlahBeli = 0;
+                // jumlahBeli.each(function(elemen) {
+                //     totalJumlahBeli += parseInt(elemen || 0);
+                // });
+                
+                // // Total harga jual
+                // let jumlahJual = api.column(4, { page: 'current' }).data();
+                // let totalJumlahJual = 0;
+                // jumlahJual.each(function(elemen) {
+                //     totalJumlahJual += parseInt(elemen || 0);
+                // });
+                
+                // // Ubah harga di footer
+                // $(api.column(3).footer()).html(totalJumlahBeli + " (" + (json.totalJmlMasuk || "-") + ")");
+                // $(api.column(4).footer()).html(totalJumlahJual + " (" + (json.totalJmlKeluar || "-") + ")");
+            },
+            dom: '<"row"<"col"l><"col-auto"B>>rt<"row"<"col"i><"col"p>>',
+            columns: [
+                {
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'reff',
+                    name: 'kd_reff'
+                },
+                {
+                    data: 'barang',
+                    name: 'barang'
+                },
+                {
+                    data: 'jml_masuk',
+                    name: 'jml_masuk'
+                },
+                {
+                    data: 'jml_keluar',
+                    name: 'jml_keluar'
+                },
+                {
+                    data: 'tgl',
+                    name: 'tgl',
+                },
+                {
+                    data: 'id_user',
+                    name: 'user'
+                }
+            ],
+            columnDefs: [
+                {
+                    targets: 5,
+                    type: 'datetime',
+                    render: function(data, type, row) {
+                        if(type === 'display') {
+                            const dateTimeFormatter = new Intl.DateTimeFormat('id-ID', {
+                                day: '2-digit',
+                                month: 'long',
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                second: '2-digit'
+                            });
+                            const parts = dateTimeFormatter.formatToParts(new Date(data));
+
+                            const formattedDate = `${parts.find(part => part.type === 'day').value} ${parts.find(part => part.type === 'month').value} ${parts.find(part => part.type === 'year').value}`;
+                            const formattedTime = `${parts.find(part => part.type === 'hour').value}:${parts.find(part => part.type === 'minute').value}:${parts.find(part => part.type === 'second').value}`;
+
+                            data = `${formattedDate} ${formattedTime}`;
+                        }
+                        return data;
+                    }
+                },
+                {
+                    targets: 2,
+                    type: 'string'
+                }
+            ],
+            buttons: [
+                'colvis',
+                {
+                    extend: 'copyHtml5',
+                    footer: true,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    footer: true,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    footer: true,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    footer: true,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+            ],
+            initComplete: (settings, json) => {
+                $("#tableStokBarang_wrapper").find("#tableStokBarang_info").parent().addClass("col-sm-12 col-md-4").removeClass("col-md-5").removeClass("col");
+                $("#tableStokBarang_wrapper").find("#tableStokBarang_paginate").parent().addClass("col-sm-12 col-md-8").removeClass("col-md-7").removeClass("col");
+            }
+        });
+        $.fn.dataTable.ext.errMode = 'none';
+
+        // Fungsi filter kustom
+        $.fn.dataTable.ext.search.push(
+            function(settings, data, dataIndex) {
+                // Filter tanggal
+                let tanggalInput = $('#tanggal').val();
+                let tanggalTabel = data[5];
+
+                if (tanggalInput) {
+                    let formattedTanggalInput = new Date(tanggalInput).getTime();
+                    let formattedTanggalTabel = new Date(tanggalTabel).getTime();
+
+                    if (formattedTanggalTabel > formattedTanggalInput) {
+                        return false;
+                    }
+                }
+
+                // Filter barang
+                let barangInput = $('#barang').val();
+
+                if (barangInput) {
+                    let barangTabel = data[2].match(/\(([^)]+)\)/)[1];
+
+                    if (barangTabel !== barangInput) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        );
+
+        // date filter
+        $('#filter_button').on('click', function() {
+            table.draw();
+        });
+
+        let tanggal = new Date();
+        tanggal = tanggal.getFullYear() + "-" + ("0" + (tanggal.getMonth() + 1)).slice(-2) + "-" + ("0" + tanggal.getDate()).slice(-2) + "T" + ("0" + tanggal.getHours()).slice(-2) + ":" + ("0" + tanggal.getMinutes()).slice(-2) + ":" + ("0" + tanggal.getSeconds()).slice(-2);
+        $("#tanggal").val(tanggal);
+    });
+</script>
+</body>
+</html>

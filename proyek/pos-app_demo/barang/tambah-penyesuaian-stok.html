@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Penyesuaian Stok - POS App (Demo)</title>
+    <link rel="shortcut icon" href="../aset/img/logo.jpg" type="image/jpg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../aset/adminlte/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- JQuery DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.0/css/responsive.bootstrap5.css">
+    <style>
+        .button-pilih-barang:active {
+            filter: invert(100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-3 mb-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../index.html" class="text-decoration-none p-2">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="../barang/penyesuaian-stok.html" class="text-decoration-none p-2">Penyesuaian Stok</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah</li>
+            </ol>
+        </nav>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <form method="post">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4 class="card-title my-1">Form Tambah Penyesuaian Stok</h4>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">Tanggal: <span class="tanggal"></span></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-2 align-items-center">
+                                <div class="col-xl-2 col-md-3 col-4">
+                                    <label for="kd_barang" class="form-label col-auto mb-0 fw-bold">Tambah Barang</label>
+                                </div>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <div class="input-group">
+                                        <input type="text" name="kd_barang" id="kd_barang" class="form-control" placeholder="Pilih Barang" autocomplete="off" autofocus>
+                                        <button class="btn btn-outline-success button-modal-barang" type="button" data-bs-toggle="modal" data-bs-target="#barangModal"><i class="fas fa-box fa-sm">&nbsp;</i> Pilih Barang</button>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-hover table-bordered table-striped nowrap" id="tablePenyesuaianStok" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kode Barang</th>
+                                                <th>Nama Barang</th>
+                                                <th>Jumlah Masuk</th>
+                                                <th>Jumlah Keluar</th>
+                                                <th>Keterangan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-kode="abc-abc-abc-1">
+                                                <td class="dt-type-numeric sorting_1 dtr-control">1</td>
+                                                <td>abc-abc-abc-1</td>
+                                                <td>Akua</td>
+                                                <td>
+                                                    <input type="number" name="jml_masuk" value="2" placeholder="Jumlah Masuk" class="form-control form-control-sm input-jumlah-masuk" required>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="jml_keluar" value="3" placeholder="Jumlah Keluar" class="form-control form-control-sm input-jumlah-keluar" required>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="ket" placeholder="Keterangan" class="form-control form-control-sm input-keterangan" required>
+                                                </td>
+                                                <td>
+                                                    <button type="button" data-kode="abc-abc-abc-1" class="btn btn-sm btn-danger button-delete-penyesuaian-stok"><i class="fas fa-trash fa-sm">&nbsp;</i> Hapus</button>
+                                                </td>
+                                            </tr>
+                                            <tr data-kode="abc-abc-abc-4">
+                                                <td class="dt-type-numeric sorting_2 dtr-control">2</td>
+                                                <td>abc-abc-abc-4</td>
+                                                <td>Uap Air Laut</td>
+                                                <td>
+                                                    <input type="number" name="jml_masuk" value="3" placeholder="Jumlah Masuk" class="form-control form-control-sm input-jumlah-masuk" required>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="jml_keluar" value="0" placeholder="Jumlah Keluar" class="form-control form-control-sm input-jumlah-keluar" required>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="ket" value="Pembelian" placeholder="Keterangan" class="form-control form-control-sm input-keterangan" required>
+                                                </td>
+                                                <td>
+                                                    <button type="button" data-kode="abc-abc-abc-4" class="btn btn-sm btn-danger button-delete-penyesuaian-stok"><i class="fas fa-trash fa-sm">&nbsp;</i> Hapus</button>
+                                                </td>
+                                            </tr>
+                                            <tr data-kode="abc-abc-abc-10">
+                                                <td class="dt-type-numeric sorting_10 dtr-control">10</td>
+                                                <td>abc-abc-abc-10</td>
+                                                <td>Air di Minikrep</td>
+                                                <td>
+                                                    <input type="number" name="jml_masuk" value="3" placeholder="Jumlah Masuk" class="form-control form-control-sm input-jumlah-masuk" required>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="jml_keluar" value="0" placeholder="Jumlah Keluar" class="form-control form-control-sm input-jumlah-keluar" required>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="ket" placeholder="Keterangan" class="form-control form-control-sm input-keterangan" required>
+                                                </td>
+                                                <td>
+                                                    <button type="button" data-kode="abc-abc-abc-10" class="btn btn-sm btn-danger button-delete-penyesuaian-stok"><i class="fas fa-trash fa-sm">&nbsp;</i> Hapus</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center gap-2">
+                            <a href="../barang/penyesuaian-stok.html" class="btn btn-secondary"><i class="fas fa-chevron-circle-left fa-sm">&nbsp;</i> Kembali</a>
+                            <button type="button" id="tambahPenyesuaianStok" class="btn btn-success"><i class="fas fa-pen-square fa-sm">&nbsp;</i> Tambah Penyesuaian Stok</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal Barang -->
+        <div class="modal fade" id="barangModal" tabindex="-1" aria-labelledby="barangsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="barangsModalLabel">Daftar Barang</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover table-bordered table-striped nowrap" id="tableBarang" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Kode Barang</th>
+                                    <th>Nama Barang</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>abc-abc-abc-1</td>
+                                    <td>Akua</td>
+                                    <td>Rp 1.000,00</td>
+                                    <td>4649</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-1" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>abc-abc-abc-2</td>
+                                    <td>Air Minum</td>
+                                    <td>Rp 800,00</td>
+                                    <td>084</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-2" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>abc-abc-abc-3</td>
+                                    <td>Air Sungai Jernih</td>
+                                    <td>Rp 1.500,00</td>
+                                    <td>0833</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-3" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>abc-abc-abc-4</td>
+                                    <td>Uap Air Laut</td>
+                                    <td>Rp 3.000,00</td>
+                                    <td>3344</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-4" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>abc-abc-abc-5</td>
+                                    <td>Air Hujan Tersaring</td>
+                                    <td>Rp 600,00</td>
+                                    <td>5963</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-5" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>abc-abc-abc-6</td>
+                                    <td>Air Bambu Alami</td>
+                                    <td>Rp 20.000,00</td>
+                                    <td>8782</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-6" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>abc-abc-abc-7</td>
+                                    <td>Cairan Bening </td> 
+                                    <td>Rp 200,00</td>
+                                    <td>39</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-7" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>abc-abc-abc-8</td>
+                                    <td>Air Jernih Mengejutkan</td>
+                                    <td>Rp 110.000,00</td>
+                                    <td>3470</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-8" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>abc-abc-abc-9</td>
+                                    <td>Air Mata Dewa</td>
+                                    <td>Rp 8.000.000,00</td>
+                                    <td>893</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-9" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>abc-abc-abc-10</td>
+                                    <td>Air di Minikrep</td>
+                                    <td>Rp 2.000,00</td>
+                                    <td>∞</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-10" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>abc-abc-abc-11</td>
+                                    <td>Air Tawar</td>
+                                    <td>Rp 1.000,00</td>
+                                    <td>81</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-11" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>abc-abc-abc-12</td>
+                                    <td>Air Suci</td>
+                                    <td>Rp 999.666.333,00</td>
+                                    <td>59</td>
+                                    <td>
+                                        <button data-kode="abc-abc-abc-12" class="btn btn-sm btn-success fw-bold button-pilih-barang"><i class="far fa-check-circle">&nbsp;</i> Pilih</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal"><i class="fas fa-check-circle">&nbsp;</i> Selesai</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!-- JQuery DataTable -->
+    <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.0/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.0/js/responsive.bootstrap5.js"></script>
+    <script>
+        $(document).ready(function() {
+            // ======== Inisialisasi Variabel
+            let barangPilihans = [];
+            let datas = [];
+            
+
+            
+            // ======== Inisialisasi JQuery DataTables
+            let tablePenyesuaianStok = new DataTable('#tablePenyesuaianStok', {
+                responsive: true,
+                info: false,
+                paging: false,
+                columns: [
+                    {
+                        data: 'iteration',
+                        name: 'Iteration'
+                    },
+                    {
+                        data: 'kd_barang',
+                        name: 'Kode Barang'
+                    },
+                    {
+                        data: 'nama_barang',
+                        name: 'Nama Barang'
+                    },
+                    {
+                        data: 'jml_masuk',
+                        name: 'jml_masuk'
+                    },
+                    {
+                        data: 'jml_keluar',
+                        name: 'jml_keluar'
+                    },
+                    {
+                        data: 'ket',
+                        name: 'Keterangan'
+                    },
+                    {
+                        data: 'aksi',
+                        name: 'Aksi',
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+            });
+            let tableBarang = new DataTable('#tableBarang', {
+                responsive: true,
+                columns: [
+                    {
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'kd_barang',
+                        name: 'kd_barang'
+                    },
+                    {
+                        data: 'nama_barang',
+                        name: 'nama_barang'
+                    },
+                    {
+                        data: 'harga_jual',
+                        name: 'harga_jual'
+                    },
+                    {
+                        data: 'stok',
+                        name: 'stok'
+                    },
+                    {
+                        data: 'aksi',
+                        name: 'aksi',
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+            });
+
+
+
+            // ======== Fungsi
+            function sweetAlert2(status, pesan) {
+                Swal.fire({
+                    icon: status,
+                    title: pesan,
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 4000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+            }
+
+
+
+            // ======== Operasi Barang
+            $("#kd_barang").keydown(function(event) {
+                // 13 = enter, 32 = spasi
+                if(event.which === 13 || event.which === 32) {
+                    let daftarBarang = ["abc-abc-abc-1", "abc-abc-abc-2", "abc-abc-abc-3", "abc-abc-abc-4", "abc-abc-abc-5", "abc-abc-abc-6", "abc-abc-abc-7", "abc-abc-abc-8", "abc-abc-abc-9", "abc-abc-abc-10", "abc-abc-abc-11", "abc-abc-abc-12"];
+                    if(daftarBarang.includes($(this).val())) {
+                        sweetAlert2("success", "Barang ditambahkan");
+                        $(this).val("");
+                    } else {
+                        sweetAlert2("error", "Barang ditambahkan");
+                    }
+                }
+            });
+
+
+
+            // ======== Operasi Tabel penyesuaian stok
+            $("#tablePenyesuaianStok").on("click", ".button-delete-penyesuaian-stok", function() {
+                const kode = $(this).data("kode");
+                let barisYangAkanDihapus = tablePenyesuaianStok.row("[data-kode='" + kode + "']");
+                if(barisYangAkanDihapus.length > 0) {
+                    barisYangAkanDihapus.remove().draw();
+                }
+            });
+
+
+
+            // ======== Tombol Tambah Penyesuaian Stok
+            $("#tambahPenyesuaianStok").click(function() {
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: "Konfirmasi untuk menambah Penyesuaian Stok",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#198754',
+                    cancelButtonColor: '#0dcaf0',
+                    confirmButtonText: 'Ya, tambah',
+                    cancelButtonText: 'Batal',
+                    focusCancel: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if(0 < tablePenyesuaianStok.data().count()) {
+                            sweetAlert2("success", "Penyesuaian Stok berhasil ditambah");
+                        } else {
+                            sweetAlert2("error", "Pilih setidaknya 1 barang");
+                        }
+                    }
+                });
+            });
+
+            let hariIni = new Date();
+            let tanggal = hariIni.toLocaleString('id', { day: 'numeric', month: 'long', year: 'numeric' });
+            $(".tanggal").text(tanggal);
+        });
+    </script>
+</body>
+</html>
