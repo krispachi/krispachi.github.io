@@ -394,7 +394,7 @@
     <div class="sidebar">
         <div class="header">
             <h3 class="merek-website"><a href="https://krispachi.github.io">Krispachi</a></h3>
-            <div class="sidebar-close">
+            <div class="sidebar-close" tabindex="0">
                 <span></span>
                 <span></span>
             </div>
@@ -409,7 +409,7 @@
     </div>
 
     <div class="wrapper">
-        <div class="sidebar-open">
+        <div class="sidebar-open" tabindex="0">
             <span></span>
             <span></span>
             <span></span>
@@ -430,11 +430,11 @@
                 </div>
                 <div class="github">
                     <h3>GitHub</h3>
-                    <p>@Krispachi</p>
+                    <p tabindex="0">@Krispachi</p>
                 </div>
                 <div class="youtube">
                     <h3>YouTube</h3>
-                    <p>@KrisnaOxygen</p>
+                    <p tabindex="0">@KrisnaOxygen</p>
                 </div>
             </div>
     
@@ -566,6 +566,8 @@
         document.querySelector(".sidebar-open").addEventListener("click", function() {
             document.querySelector(".sidebar").style.display = "inherit";
             this.style.display = "none";
+            document.querySelector(".sidebar .merek-website a").setAttribute("tabindex", 1);
+            document.querySelector(".sidebar .merek-website a").focus();
         });
         document.querySelector(".sidebar-close").addEventListener("click", function() {
             sidebarClose();
@@ -580,10 +582,10 @@
 
         // Redirect jika klik hero
         document.querySelector(".hero .github").addEventListener("click", function() {
-            window.open("https://github.com/krispachi")
+            window.open("https://github.com/krispachi");
         });
         document.querySelector(".hero .youtube").addEventListener("click", function() {
-            window.open("https://www.youtube.com/@krisnaoxygen")
+            window.open("https://www.youtube.com/@krisnaoxygen");
         });
         
         // Mengubah tema menjadi indigo-putih
@@ -603,7 +605,32 @@
                     element.style = "border-color: #e3bd64";
                 });
             }
-        });   
+        });
+
+        // Handle tabindex kustom
+        document.querySelector(".sidebar-open").addEventListener("keypress", function() {
+            if (event.key === "Enter") {
+                document.querySelector(".sidebar").style.display = "inherit";
+                this.style.display = "none";
+                document.querySelector(".sidebar .merek-website a").setAttribute("tabindex", 1);
+                document.querySelector(".sidebar .merek-website a").focus();
+            }
+        });
+        document.querySelector(".sidebar-close").addEventListener("keypress", function() {
+            if (event.key === "Enter") {
+                sidebarClose();
+            }
+        });
+        document.querySelector(".github p").addEventListener("keypress", function() {
+            if (event.key === "Enter") {
+                window.open("https://github.com/krispachi");
+            }
+        });
+        document.querySelector(".youtube p").addEventListener("keypress", function() {
+            if (event.key === "Enter") {
+                window.open("https://www.youtube.com/@krisnaoxygen");
+            }
+        });
     </script>
 </body>
 </html>
