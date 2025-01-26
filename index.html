@@ -212,6 +212,7 @@
         .hero .github:hover, 
         .hero .youtube:hover {
             background-position: top;
+            text-shadow: .6px .6px 8px rgba(0, 0, 0, 1);
         }
         .hero .github:active, 
         .hero .youtube:active {
@@ -225,10 +226,6 @@
             margin-left: -10%;
             height: .9px;
             background-color: #fff;
-        }
-        .hero .github:hover, 
-        .hero .youtube:hover {
-            text-shadow: .6px .6px 3px rgba(0, 0, 0, .8);
         }
         .hero .youtube {
             grid-area: youtube;
@@ -388,6 +385,9 @@
         .pb-3 {
             padding-bottom: 3em;
         }
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
 <body onload="ubahSalamWaktu()">
@@ -441,39 +441,43 @@
             <div class="author">
                 <section id="informasi" class="informasi">
                     <h3>💡Informasi</h3>
-                    <p>Selamat datang di website yang dibuat oleh Krispachi untuk memajang sesuatu yang saya pernah buat dengan coding. Disini juga terdapat beberapa informasi mengenai saya.</p><br>
-                    <p>Pada website ini saya isi dengan: Website yang dibuat saat belajar sebagai latihan; Website yang dibuat dari permintaan seseorang; Dan tidak hanya website, bahkan ada software yang pernah saya buat. Kedepannya, mungkin ada yang lebih dari itu.</p>
+                    <p>Selamat datang pengembara!!. Website ini dibuat untuk memajang sesuatu yang saya pernah buat dengan coding, dan beberapa informasi tentang saya.</p><br>
+                    <p>Website ini akan saya isi dengan: Hasil latihan berupa website atau aplikasi; Demo website yang dibuat dari permintaan seseorang; Software yang pernah saya buat; Informasi tentang saya tentunya; Dan kedepannya, mungkin ada yang lebih dari itu.</p>
                 </section>
         
                 <section id="profil" class="profil">
                     <h3>📚Profil</h3>
                     <img src="img/krispachi.jpg" alt="Foto Krispachi">
-                    <p>Halou, saya Krisna Ariwidnyana (Krispachi). Saya mulai suka belajar coding setelah melihat banyak kurung kurawal tutup ("}") di sebuah file JSON. Sampai sekarang saya masih belajar tentang pemrograman.</p>
+                    <p>Halou, saya Krisna Ariwidnyana (Krispachi). Saya suka belajar coding sejak melihat indahnya susunan kurung kurawal tutup } di file JSON saat mengedit Resource Pack Minecraft. Sampai saat ini saya masih belajar tentang pemrograman.</p>
                 </section>
             </div>
             
             <section id="karya" class="karya">
                 <h3>🎍Karya</h3>
-                <p class="pb-2">Saya suka membuat program karena dapat melatih cara berpikir dalam menyelesaikan masalah dengan logika yang masuk akal. Oleh karena itu, dibawah ini saya memajang beberapa program yang saya buat dan beberapa dapat diakses di GitHub saya.</p>
+                <p class="pb-2">Saya suka membuat program, karena dapat melatih cara berpikir dan menyelesaikan masalah dengan logika yang masuk akal. Oleh karena itu, dibawah ini saya memajang beberapa program yang saya buat dan beberapa dapat diakses di GitHub saya.</p>
 
                 <h3 class="pb-0-5">🪴Proyek</h3>
+                <p class="pb-2 text-center">Aplikasi atau Website yang dibuat atas permintaan orang lain.</p>
+
                 <div class="list pb-3">
                     <div class="content">
                         <img src="img/proyek/pos-app.png" alt="POS App">
                         <div>
                             <h3>POS App</h3>
-                            <p>POS App adalah website yang dibuat oleh <a href="https://github.com/krispachi" class="link-karya" target="_blank">Saya</a> dan <a href="https://github.com/antaGB" class="link-karya" target="_blank">Anta</a> menggunakan Laravel 10. Website ini bisa digunakan sebagai kasir untuk toko karena berisi fitur Tambah Barang, Penjualan, Pembelian, Pembeli, Suplier, Jurnal Umum. Lengkap dengan Laporan Penjualan dan Pembelian, Laporan Laba Rugi, Laporan Neraca, dan Buku Besar.</p><br>
-                            <p>Website ini dipesan oleh salah satu guru di SMKN 1 Mas Ubud dan pernah dipakai untuk kasir di acara YEC SMKN 1 Mas Ubud. YEC adalah kegiatan yang memberikan kesempatan dan pengalaman kepada peserta didik untuk menumbuhkan potensi diri, kreativitas dan jiwa wirausaha sejak dini.</p><br>
-                            <p>(Versi Demo belum selesai)<br><br>18/08/2023 - 07/08/2024</p><br>
-                            <a href="https://krispachi.github.io/proyek/pos-app_demo/index.html" class="link-karya" target="_blank">Kunjungi Websitenya</a>
+                            <p>
+                                Website ini dibuat oleh <a href="https://github.com/krispachi" class="link-karya" target="_blank">Krispachi</a> dan <a href="https://github.com/antaGB" class="link-karya" target="_blank">AntaGB</a> menggunakan Laravel 10. Memiliki fitur CRUD Barang, Penjualan, Print Struk, Pembelian, Pembeli, Suplier, Jurnal Umum. Lengkap dengan Laporan Penjualan dan Pembelian, Laporan Laba Rugi, Laporan Neraca, dan Buku Besar.<br><br>
+                                Teknologi: Laravel 10<br>
+                                Tanggal: 2023-08-18
+                            </p><br>
+                            <a href="https://krispachi.github.io/proyek/pos-app_demo/index.html" class="link-karya" target="_blank">Kunjungi Demo Websitenya</a>
                         </div>
                     </div>
                     <div class="content">
                         <img src="img/proyek/krisna-laundry.png" alt="Krisna Laundry">
                         <div>
                             <h3>Krisna Laundry</h3>
-                            <p>Website untuk mencatat transaksi Laundry.</p><br>
-                            <p>(Versi Demo akan Segera Hadir)</p><br>
+                            <!-- <p>Website untuk mencatat transaksi Laundry.</p><br> -->
+                            <p>(Website ini dibuat menggunakan PHP, jadi tidak dapat di akses melalui GitHub Pages, saya akan segera membuatkan versi demonya :D)</p><br>
                             <!-- <a href="#" class="link-karya" target="_blank">Kunjungi Websitenya</a> -->
                         </div>
                     </div>
@@ -481,20 +485,26 @@
                         <img src="img/proyek/surat-digistik.png" alt="Surat Digistik">
                         <div>
                             <h3>Surat Digistik</h3>
-                            <p>Website untuk menghasilkan surat dalam bentuk PDF yang isinya dari form.</p><br>
-                            <p>(Versi Demo akan Segera Hadir)</p><br>
+                            <!-- <p>Website untuk menghasilkan surat dalam bentuk PDF yang isinya dari form.</p><br> -->
+                            <p>(Website ini dibuat menggunakan PHP, jadi tidak dapat di akses melalui GitHub Pages, saya akan segera membuatkan versi demonya :D)</p><br>
                             <!-- <a href="#" class="link-karya" target="_blank">Kunjungi Websitenya</a> -->
                         </div>
                     </div>
                 </div>
 
                 <h3 class="pb-0-5">🌱Latihan</h3>
+                <p class="pb-2 text-center">Hasil dari latihan saat mempelajari sebuah teknologi baru.</p>
+
                 <div class="list">
                     <div class="content">
                         <img src="img/latihan/krispachi-march.png" alt="Krispachi March">
                         <div>
                             <h3>Krispachi March</h3>
-                            <p>Krispachi March adalah nama dari website yang saya buat disaat belajar tentang CSS Grid di channel Web Programming UNPAS di YouTube. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isi website di tutorial yang pastinya saya sudah pelajari setiap bagian dari kode yang dipakai untuk membuat websitenya.</p><br>
+                            <p>
+                                Website ini adalah hasil latihan saat mempelajari di Channel YouTube Web Programming UNPAS. Saya membuat website ini sambil mengikuti tutorial dan sedikit memodifikasi isinya supaya lebih paham pada setiap bagian dari kode yang dipakai.<br><br>
+                                Teknologi: CSS Grid<br>
+                                Tanggal: 2023-03-31
+                            </p><br>
                             <a href="https://krispachi.github.io/HTML/krispachi-march" class="link-karya" target="_blank">Kunjungi Websitenya</a>
                         </div>
                     </div>
@@ -502,7 +512,11 @@
                         <img src="img/latihan/portfolio-alpha.png" alt="Portfolio Alpha">
                         <div>
                             <h3>Portfolio Alpha</h3>
-                            <p>Website Portfolio Alpha adalah Website yang saya buat untul latihan belajar menggunakan Bootstrap. Saya menonton tutorial di Channel YouTube Web Programming UNPAS pada video NgoBar #27 sambil mempraktekkan membuat Websitenya dengan memodifikasi beberapa tampilan sesuai keinginan saya.</p><br>
+                            <p>
+                                Ini adalah website hasil dari latihan belajar Bootstrap di Channel YouTube Web Programming UNPAS pada video NgoBar #27, dengan praktek membuat websitenya secara langsung ketika menonton tutorial sambil memodifikasi beberapa tampilan sesuai keinginan saya.<br><br>
+                                Teknologi: Bootstrap 5<br>
+                                Tanggal: 2023-02-05
+                            </p><br>
                             <a href="https://krispachi.github.io/HTML/portfolio-bootstrap5" class="link-karya" target="_blank">Kunjungi Websitenya</a>
                         </div>
                     </div>
@@ -510,7 +524,11 @@
                         <img src="img/latihan/meng-awan.png" alt="MengAwan">
                         <div>
                             <h3>MengAwan</h3>
-                            <p>Website MengAwan adalah website yang saya buat sebagai latihan untuk menggunakan Bootstrap. Saya membuat website ini sambil melihat tutorial di YouTube sekaligus langsung praktek dan saya modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.</p><br>
+                            <p>
+                                Website ini adalah hasil latihan menggunakan Bootstrap. Saya membuat website ini dengan menonton tutorial di Channel YouTube Dea Afrizal, sekaligus langsung praktek serta saya modifikasi dengan menambahkan ide sendiri dan jadilah website ini hehehe.<br><br>
+                                Teknologi: Bootstrap 5<br>
+                                Tanggal: 2023-01-14
+                            </p><br>
                             <a href="https://krispachi.github.io/HTML/myporto" class="link-karya" target="_blank">Kunjungi Websitenya</a>
                         </div>
                     </div>
@@ -518,7 +536,11 @@
                         <img src="img/latihan/program-kasir-krisna.png" alt="Program Kasir Krisna">
                         <div>
                             <h3>Program Kasir Krisna</h3>
-                            <p>Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database yang membuat program bisa jalan tanpa install XAMPP. Program ini saya buat untuk tugas sekolah, mungkin kurang cocok untuk fungsi sebenarnya.</p><br>
+                            <p>
+                                Program Kasir Krisna adalah program Point Of Sale yang saya buat menggunakan Java GUI serta memakai Embedded Derby Database supaya program bisa jalan tanpa install XAMPP. Program ini saya buat untuk tugas sekolah, mungkin kurang cocok untuk fungsi sebenarnya.<br><br>
+                                Teknologi: Java, Derby Database<br>
+                                Tanggal: 2023-02-05
+                            </p><br>
                             <a href="https://github.com/krispachi/Java/tree/main/Program_Kasir_Krisna" class="link-karya" target="_blank">Lihat Programnya</a>
                         </div>
                     </div>
@@ -526,7 +548,11 @@
                         <img src="img/latihan/navbar-dropdown-jquery.png" alt="Navbar Dropdown JQuery">
                         <div>
                             <h3>Navbar Dropdown JQuery</h3>
-                            <p>Saat belajar JQuery di YouTube, saya melatih penggunaan JQuery dengan membuat Navbar Dropdown mengikuti tutorial yang saya tonton dengan memodifikasi langkah-langkah di tutorial. Dalam website ini, saya hanya berfokus dalam penggunaan JQuery saja.</p><br>
+                            <p>
+                                Saat belajar JQuery di YouTube, saya melatih penggunaan JQuery dengan membuat Navbar Dropdown mengikuti tutorial yang saya tonton dengan memodifikasi langkah-langkah di tutorial. Dalam website ini, saya hanya fokus pada penggunaan JQuery.<br><br>
+                                Teknologi: jQuery<br>
+                                Tanggal: 2023-06-15
+                            </p><br>
                             <a href="https://krispachi.github.io/HTML/navbar-dropdown-jquery" class="link-karya" target="_blank">Kunjungi Websitenya</a>
                         </div>
                     </div>
